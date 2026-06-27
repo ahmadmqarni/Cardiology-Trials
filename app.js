@@ -164,7 +164,8 @@ function renderSearch(query) {
   cardiologyData.forEach(sec => {
     sec.subsections.forEach(sub => {
       sub.trials.forEach(trial => {
-        const searchable = [trial.name, trial.question, trial.result, trial.pearl, String(trial.year)].join(' ').toLowerCase();
+        const takeawayText = (trial.takeaways || []).join(' ');
+        const searchable = [trial.name, trial.fullName, trial.question, trial.result, takeawayText, trial.whyLandmark, String(trial.year)].join(' ').toLowerCase();
         if (searchable.includes(q)) {
           results.push({ sec, sub, trial });
         }
@@ -207,28 +208,53 @@ function openModal(sectionId, subId, trialId) {
   const sec = getSection(sectionId);
   const sub = getSubsection(sectionId, subId);
 
+  const takeawaysHtml = trial.takeaways && trial.takeaways.length
+    ? `<hr class="modal-divider">
+       <div class="modal-section-label">Key Takeaways</div>
+       <ul class="modal-takeaways">${trial.takeaways.map(t => `<li>${escape(t)}</li>`).join('')}</ul>`
+    : '';
+
+  const whyLandmarkHtml = trial.whyLandmark
+    ? `<hr class="modal-divider">
+       <div class="modal-section-label">Why Landmark</div>
+       <div class="modal-why">${escape(trial.whyLandmark)}</div>`
+    : '';
+
   const examPearlHtml = trial.examPearl
     ? `<div class="modal-exam-pearl">${escape(trial.examPearl)}</div>`
     : '';
 
+  let linkHtml = '';
+  if (trial.pubLink) {
+    linkHtml = `<hr class="modal-divider">
+      <div class="modal-section-label">Primary Paper</div>
+      <div class="modal-links">
+        <a href="${trial.pubLink}" target="_blank" rel="noopener" class="modal-link-btn">Read Primary Paper ↗</a>`;
+    if (trial.pubLink2) {
+      linkHtml += `<a href="${trial.pubLink2}" target="_blank" rel="noopener" class="modal-link-btn modal-link-btn-secondary">Corrected / Follow-up Paper ↗</a>`;
+    }
+    linkHtml += `</div>`;
+  }
+
   modalBox.innerHTML = `
     <button id="modal-close" aria-label="Close">✕</button>
     <div class="modal-trial-name">${escape(trial.name)}</div>
+    ${trial.fullName ? `<div class="modal-full-name">${escape(trial.fullName)}</div>` : ''}
     <div class="modal-meta">
       <span class="modal-year-badge">${trial.year}</span>
       <span class="modal-n-badge">N = ${escape(trial.n)}</span>
-      <span style="font-size:0.75rem;color:#6080a0">${escape(sec.title)} › ${escape(sub.title)}</span>
+      <span class="modal-path">${escape(sec.title)} › ${escape(sub.title)}</span>
     </div>
     <hr class="modal-divider">
     <div class="modal-section-label">Trial Question</div>
     <div class="modal-question">${escape(trial.question)}</div>
     <hr class="modal-divider">
-    <div class="modal-section-label">Result</div>
+    <div class="modal-section-label">Concise Result</div>
     <div class="modal-result">${escape(trial.result)}</div>
-    <hr class="modal-divider">
-    <div class="modal-section-label">Key Pearl</div>
-    <div class="modal-pearl">${escape(trial.pearl)}</div>
-    ${examPearlHtml}`;
+    ${takeawaysHtml}
+    ${whyLandmarkHtml}
+    ${examPearlHtml}
+    ${linkHtml}`;
 
   modalOverlay.classList.add('active');
   document.body.style.overflow = 'hidden';

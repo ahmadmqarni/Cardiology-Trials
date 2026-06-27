@@ -8,142 +8,248 @@ const cardiologyData = [
     subsections: [
       {
         id: "acs",
-        title: "ACS",
+        title: "ACS / STEMI / Antiplatelet Therapy",
         color: "#e74c3c",
         trials: [
           {
             id: "isis2",
             name: "ISIS-2",
+            fullName: "Second International Study of Infarct Survival",
             year: 1988,
             n: "17,187",
-            question: "Aspirin ± streptokinase in STEMI?",
-            result: "Aspirin reduced vascular mortality by 23%; streptokinase also reduced mortality.",
-            pearl: "Established aspirin as the cornerstone of ACS therapy.",
-            examPearl: null
+            question: "In acute MI, do early aspirin and/or IV streptokinase reduce vascular mortality?",
+            result: "Both aspirin and streptokinase independently reduced 5-week vascular mortality, with additive benefit when combined.",
+            takeaways: [
+              "Aspirin reduced vascular death, reinfarction, and stroke.",
+              "Streptokinase also reduced mortality.",
+              "Combination therapy produced the greatest benefit.",
+              "Benefit was achieved with simple, widely available therapies.",
+              "Bleeding risk existed but was outweighed by mortality benefit."
+            ],
+            whyLandmark: "Established immediate aspirin as foundational acute MI therapy and helped confirm fibrinolysis as lifesaving in STEMI-era care.",
+            pubLink: "https://pubmed.ncbi.nlm.nih.gov/2903874/"
           },
           {
             id: "pami",
             name: "PAMI",
+            fullName: "Primary Angioplasty in Myocardial Infarction",
             year: 1993,
             n: "395",
-            question: "Primary PCI vs thrombolysis in STEMI?",
-            result: "PCI reduced death, reinfarction, and stroke.",
-            pearl: "Helped establish primary PCI as preferred reperfusion strategy.",
-            examPearl: null
+            question: "In acute MI, is immediate primary angioplasty superior to thrombolytic therapy?",
+            result: "Immediate PTCA reduced the composite of death or nonfatal reinfarction compared with IV tPA.",
+            takeaways: [
+              "Primary angioplasty improved short-term clinical outcomes.",
+              "Lower reinfarction and less intracranial hemorrhage than thrombolysis.",
+              "Benefit depended heavily on rapid access and experienced PCI centers.",
+              "Conducted before modern stents, P2Y12 inhibitors, and radial PCI."
+            ],
+            whyLandmark: "Helped shift STEMI reperfusion strategy from routine thrombolysis toward primary PCI when timely available.",
+            pubLink: "https://pubmed.ncbi.nlm.nih.gov/8433725/"
+          },
+          {
+            id: "shock",
+            name: "SHOCK",
+            fullName: "Should We Emergently Revascularize Occluded Coronaries for Cardiogenic Shock",
+            year: 1999,
+            n: "302",
+            question: "In AMI with cardiogenic shock, does early revascularization improve survival compared with initial medical stabilization?",
+            result: "Early revascularization did not significantly reduce 30-day mortality but improved 6-month and long-term survival.",
+            takeaways: [
+              "30-day mortality: numerically lower but not statistically significant.",
+              "6-month mortality improved with early revascularization.",
+              "Long-term follow-up confirmed survival benefit.",
+              "Benefit was most clinically important despite very high absolute mortality.",
+              "Older patients had less clear early benefit in subgroup analyses."
+            ],
+            whyLandmark: "Established urgent revascularization as the default strategy for AMI-related cardiogenic shock.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJM199908263410901"
           },
           {
             id: "cure",
             name: "CURE",
+            fullName: "Clopidogrel in Unstable Angina to Prevent Recurrent Events",
             year: 2001,
             n: "12,562",
-            question: "Clopidogrel + aspirin vs aspirin alone in NSTEMI/UA?",
-            result: "Reduced CV death, MI, and stroke.",
-            pearl: "Established DAPT in ACS.",
-            examPearl: null
+            question: "In NSTE-ACS, does adding clopidogrel to aspirin reduce ischemic events?",
+            result: "Clopidogrel plus aspirin reduced CV death, MI, or stroke compared with aspirin alone, but increased major bleeding.",
+            takeaways: [
+              "Primary outcome reduced: 9.3% vs 11.4%.",
+              "Benefit mainly driven by reduction in MI.",
+              "Bleeding increased, especially perioperative bleeding if CABG occurred soon after therapy.",
+              "Supported prolonged dual antiplatelet therapy after ACS."
+            ],
+            whyLandmark: "Established dual antiplatelet therapy as standard care in NSTE-ACS.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa010746"
           },
           {
             id: "triton",
             name: "TRITON-TIMI 38",
+            fullName: "Trial to Assess Improvement in Therapeutic Outcomes by Optimizing Platelet Inhibition with Prasugrel",
             year: 2007,
             n: "13,608",
-            question: "Prasugrel vs clopidogrel in ACS undergoing PCI?",
-            result: "Reduced ischemic events and stent thrombosis but increased major bleeding.",
-            pearl: "Avoid prasugrel in prior stroke/TIA.",
-            examPearl: null
+            question: "In ACS patients undergoing PCI, is prasugrel superior to clopidogrel?",
+            result: "Prasugrel reduced CV death, MI, or stroke but increased major bleeding.",
+            takeaways: [
+              "Primary endpoint reduced: 9.9% vs 12.1%.",
+              "MI and stent thrombosis were significantly reduced.",
+              "Major bleeding increased.",
+              "Net harm in prior stroke/TIA.",
+              "Caution in age ≥75 years or weight <60 kg."
+            ],
+            whyLandmark: "Defined prasugrel as a more potent P2Y12 option for selected ACS-PCI patients and highlighted the ischemia–bleeding tradeoff.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa0706482"
           },
           {
             id: "plato",
             name: "PLATO",
+            fullName: "Platelet Inhibition and Patient Outcomes",
             year: 2009,
             n: "18,624",
-            question: "Ticagrelor vs clopidogrel in ACS?",
-            result: "Reduced CV death, MI, and stroke.",
-            pearl: "Only major P2Y12 trial showing mortality reduction.",
-            examPearl: null
+            question: "In ACS, is ticagrelor superior to clopidogrel for preventing ischemic events?",
+            result: "Ticagrelor reduced CV death, MI, or stroke and reduced mortality compared with clopidogrel, without increasing overall major bleeding.",
+            takeaways: [
+              "Primary endpoint reduced: 9.8% vs 11.7%.",
+              "All-cause mortality was lower with ticagrelor.",
+              "Non-CABG-related bleeding increased.",
+              "Dyspnea and bradyarrhythmias were more common.",
+              "Benefit applied across invasive and noninvasive ACS strategies."
+            ],
+            whyLandmark: "Made ticagrelor a preferred P2Y12 inhibitor in many ACS patients.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa0904327"
           },
           {
             id: "complete",
             name: "COMPLETE",
+            fullName: "Complete vs Culprit-Only Revascularization to Treat Multi-vessel Disease After Early PCI for STEMI",
             year: 2019,
             n: "4,041",
-            question: "Complete vs culprit-only revascularization after STEMI?",
-            result: "Complete revascularization reduced CV death and MI.",
-            pearl: "Multivessel STEMI should generally undergo staged complete revascularization.",
-            examPearl: null
+            question: "After culprit-lesion PCI for STEMI with multivessel disease, does staged complete revascularization improve outcomes?",
+            result: "Complete revascularization reduced CV death/MI and reduced CV death/MI/ischemia-driven revascularization.",
+            takeaways: [
+              "Benefit was driven by fewer recurrent MIs and fewer ischemia-driven revascularizations.",
+              "Complete PCI could be done during index admission or staged after discharge.",
+              "Excluded cardiogenic shock.",
+              "Reinforced treatment of significant nonculprit lesions after STEMI stabilization."
+            ],
+            whyLandmark: "Changed STEMI multivessel management toward planned complete revascularization in stable patients.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1907775"
           }
         ]
       },
       {
         id: "ccs",
-        title: "Chronic Coronary Syndrome",
+        title: "Stable CAD / Ischemia / Physiology-Guided PCI",
         color: "#2980b9",
         trials: [
           {
             id: "courage",
             name: "COURAGE",
+            fullName: "Clinical Outcomes Utilizing Revascularization and Aggressive Drug Evaluation",
             year: 2007,
             n: "2,287",
-            question: "PCI + OMT vs OMT alone in stable CAD?",
-            result: "No reduction in death or MI.",
-            pearl: "PCI improves symptoms, not prognosis.",
-            examPearl: null
+            question: "In stable CAD, does PCI added to optimal medical therapy reduce death or MI?",
+            result: "PCI plus optimal medical therapy did not reduce death or MI compared with optimal medical therapy alone.",
+            takeaways: [
+              "PCI improved angina earlier, but the advantage narrowed over time.",
+              "No hard-outcome advantage for routine PCI in stable CAD.",
+              "Trial used bare-metal stents or early-generation PCI approaches.",
+              "Excluded very high-risk anatomy such as significant left main disease."
+            ],
+            whyLandmark: "Shifted stable CAD management toward optimal medical therapy first, with PCI mainly for symptoms or high-risk anatomy.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa070829"
           },
           {
             id: "fame",
             name: "FAME",
+            fullName: "Fractional Flow Reserve Versus Angiography for Multivessel Evaluation",
             year: 2009,
             n: "1,005",
-            question: "FFR-guided PCI vs angiography-guided PCI?",
-            result: "Reduced MACE and unnecessary stenting.",
-            pearl: "Physiology beats anatomy.",
-            examPearl: null
+            question: "Does FFR-guided PCI improve outcomes compared with angiography-guided PCI?",
+            result: "FFR-guided PCI reduced major adverse cardiac events and reduced the number of stents used.",
+            takeaways: [
+              "Fewer lesions were stented with FFR guidance.",
+              "Lower death/MI/repeat revascularization at 1 year.",
+              "Demonstrated that angiographic stenosis severity alone overestimates ischemic significance.",
+              "Encouraged physiology-guided revascularization."
+            ],
+            whyLandmark: "Made FFR-guided PCI a standard concept in stable multivessel CAD.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa0807611"
           },
           {
             id: "ischemia",
             name: "ISCHEMIA",
+            fullName: "International Study of Comparative Health Effectiveness with Medical and Invasive Approaches",
             year: 2020,
             n: "5,179",
-            question: "Initial invasive vs conservative strategy in moderate-severe ischemia?",
-            result: "No reduction in major CV events.",
-            pearl: "Revascularization mainly improves angina.",
-            examPearl: null
+            question: "In stable CAD with moderate/severe ischemia, does an initial invasive strategy reduce major CV events compared with conservative therapy?",
+            result: "An initial invasive strategy did not significantly reduce major ischemic outcomes or death compared with conservative therapy over median 3.2 years.",
+            takeaways: [
+              "Invasive strategy improved angina and quality of life, especially in symptomatic patients.",
+              "No early hard-outcome advantage in the overall cohort.",
+              "Left main disease was excluded by CT angiography.",
+              "Early procedural MI tradeoff vs later spontaneous MI reduction complicates interpretation."
+            ],
+            whyLandmark: "Reinforced that stable CAD is not automatically a 'stent-first' disease; symptoms and anatomy should guide invasive management.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1915922"
           }
         ]
       },
       {
         id: "cabg-pci",
-        title: "CABG vs PCI",
+        title: "Revascularization Strategy / CABG vs PCI",
         color: "#8e44ad",
         trials: [
           {
             id: "syntax",
             name: "SYNTAX",
+            fullName: "Synergy Between PCI With TAXUS and Cardiac Surgery",
             year: 2009,
             n: "1,800",
-            question: "PCI vs CABG in LM or 3-vessel disease?",
-            result: "CABG superior in complex CAD.",
-            pearl: "Introduced the SYNTAX score.",
-            examPearl: null
+            question: "In complex left main or three-vessel CAD, is PCI noninferior to CABG?",
+            result: "CABG had lower 1-year MACCE than PCI, mainly due to less repeat revascularization; stroke was higher with CABG.",
+            takeaways: [
+              "PCI had more repeat revascularization.",
+              "CABG favored in higher anatomic complexity.",
+              "Introduced and validated the clinical importance of the SYNTAX score.",
+              "Used first-generation paclitaxel-eluting stents."
+            ],
+            whyLandmark: "Established anatomy-based decision-making for PCI vs CABG and embedded the Heart Team concept.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa0804626"
           },
           {
             id: "freedom",
             name: "FREEDOM",
+            fullName: "Future Revascularization Evaluation in Patients with Diabetes Mellitus: Optimal Management of Multivessel Disease",
             year: 2012,
             n: "1,900",
-            question: "CABG vs PCI in diabetes with multivessel CAD?",
-            result: "CABG reduced death and MI.",
-            pearl: "CABG remains preferred in diabetic multivessel disease.",
-            examPearl: null
+            question: "In diabetic patients with multivessel CAD, is CABG superior to PCI with DES?",
+            result: "CABG reduced death and MI compared with PCI, but increased stroke.",
+            takeaways: [
+              "Primary composite of death/MI/stroke favored CABG.",
+              "CABG benefit mainly from lower death and MI.",
+              "Stroke was more frequent after CABG.",
+              "Most PCI used first-generation DES.",
+              "Strongly influenced guidelines favoring CABG in diabetics with multivessel CAD."
+            ],
+            whyLandmark: "Defined CABG as preferred revascularization for many patients with diabetes and multivessel CAD.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1211585"
           },
           {
             id: "noble",
             name: "NOBLE",
+            fullName: "Nordic–Baltic–British Left Main Revascularisation Study",
             year: 2016,
             n: "1,201",
-            question: "PCI vs CABG in left main disease?",
-            result: "Higher long-term event rates with PCI.",
-            pearl: "Supports CABG in complex LM disease.",
-            examPearl: null
+            question: "In left main CAD, is PCI noninferior to CABG?",
+            result: "PCI was inferior to CABG for MACCE at 5 years, driven by nonprocedural MI and repeat revascularization; mortality was similar.",
+            takeaways: [
+              "CABG had fewer spontaneous MIs and repeat revascularizations.",
+              "Stroke difference was not clearly significant in the original report.",
+              "Results contrasted partly with EXCEL, fueling debate.",
+              "Reinforced careful left main PCI selection."
+            ],
+            whyLandmark: "Key trial shaping modern left main revascularization discussions and Heart Team decision-making.",
+            pubLink: "https://pubmed.ncbi.nlm.nih.gov/27810312/"
           }
         ]
       },
@@ -155,90 +261,112 @@ const cardiologyData = [
           {
             id: "stiches",
             name: "STICHES",
+            fullName: "STICH Extension Study",
             year: 2016,
             n: "1,212",
-            question: "CABG + OMT vs OMT alone in EF ≤35%?",
-            result: "Improved 10-year survival.",
-            pearl: "One of the few revascularization trials demonstrating mortality benefit.",
-            examPearl: null
+            question: "In ischemic LV dysfunction, does CABG plus medical therapy improve long-term survival compared with medical therapy alone?",
+            result: "At 10 years, CABG plus medical therapy reduced all-cause mortality compared with medical therapy alone.",
+            takeaways: [
+              "Early surgical risk was offset by long-term survival benefit.",
+              "All-cause mortality: 58.9% vs 66.1%.",
+              "CV mortality and CV hospitalization also improved.",
+              "Viability testing did not clearly identify who benefits most.",
+              "Benefit is long-term, not immediate."
+            ],
+            whyLandmark: "Established CABG as survival-improving therapy in selected patients with ischemic cardiomyopathy and surgically suitable CAD.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1602001"
           }
         ]
       },
       {
-        id: "aortic-stenosis",
-        title: "Aortic Stenosis",
+        id: "structural",
+        title: "Structural Heart Disease / Transcatheter Valve / LAAO",
         color: "#e67e22",
         trials: [
           {
             id: "partner1",
             name: "PARTNER 1",
+            fullName: "Placement of Aortic Transcatheter Valves Trial, Cohort B",
             year: 2010,
             n: "358",
-            question: "TAVI vs medical therapy in inoperable AS?",
-            result: "Major mortality reduction with TAVI.",
-            pearl: "Started the TAVI era.",
-            examPearl: null
+            question: "In inoperable severe AS, does TAVR improve survival compared with standard therapy?",
+            result: "TAVR significantly reduced mortality compared with standard therapy but increased vascular complications and stroke risk.",
+            takeaways: [
+              "One of the first randomized trials showing survival benefit of TAVR.",
+              "Standard therapy often included balloon valvuloplasty.",
+              "TAVR improved symptoms and survival in otherwise inoperable patients.",
+              "Early-generation devices had significant vascular and neurologic complications."
+            ],
+            whyLandmark: "Launched the modern TAVR era by proving transcatheter valve replacement could be lifesaving.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1008232"
           },
           {
             id: "partner3",
             name: "PARTNER 3",
+            fullName: "PARTNER 3 Low-Risk Trial",
             year: 2019,
             n: "1,000",
-            question: "TAVI vs SAVR in low-risk AS?",
-            result: "TAVI superior for composite endpoint.",
-            pearl: "Expanded TAVI to low-risk patients.",
-            examPearl: null
-          }
-        ]
-      },
-      {
-        id: "mitral-teer",
-        title: "Mitral TEER",
-        color: "#16a085",
-        trials: [
+            question: "In low-risk severe AS, is balloon-expandable TAVR at least as good as surgery?",
+            result: "At 1 year, TAVR reduced the composite of death, stroke, or rehospitalization compared with surgery.",
+            takeaways: [
+              "Primary endpoint: 8.5% TAVR vs 15.1% surgery at 1 year.",
+              "Faster recovery and shorter hospital stay with TAVR.",
+              "Longer-term durability and reintervention remain key considerations.",
+              "Mainly applies to selected low-risk patients with suitable anatomy."
+            ],
+            whyLandmark: "Expanded TAVR from high/intermediate-risk populations into carefully selected low-risk severe AS patients.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1814052"
+          },
           {
             id: "coapt",
             name: "COAPT",
+            fullName: "Cardiovascular Outcomes Assessment of the MitraClip Percutaneous Therapy for Heart Failure Patients with Functional Mitral Regurgitation",
             year: 2018,
             n: "614",
-            question: "MitraClip + GDMT vs GDMT in secondary MR?",
-            result: "Reduced mortality and HF hospitalization.",
-            pearl: "One of the most practice-changing SHD trials.",
-            examPearl: null
-          }
-        ]
-      },
-      {
-        id: "tricuspid-teer",
-        title: "Tricuspid TEER",
-        color: "#f39c12",
-        trials: [
+            question: "In symptomatic HF with significant secondary MR despite GDMT, does mitral TEER improve outcomes?",
+            result: "MitraClip plus GDMT reduced HF hospitalization and all-cause mortality compared with GDMT alone.",
+            takeaways: [
+              "HF hospitalization at 24 months markedly reduced.",
+              "Mortality reduced at 2 years.",
+              "Patient selection was crucial: severe MR disproportionate to LV size and optimized GDMT.",
+              "Results differed from MITRA-FR, likely due to selection and MR/LV phenotype differences."
+            ],
+            whyLandmark: "Established mitral TEER as outcome-improving therapy in selected patients with secondary MR and HFrEF.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1806640"
+          },
           {
             id: "triluminate",
             name: "TRILUMINATE Pivotal",
+            fullName: "TRILUMINATE Pivotal Trial",
             year: 2023,
             n: "350",
-            question: "TriClip vs medical therapy in severe TR?",
-            result: "Improved symptoms, QoL, and TR severity.",
-            pearl: "First landmark positive RCT for tricuspid TEER.",
-            examPearl: null
-          }
-        ]
-      },
-      {
-        id: "laao",
-        title: "LAAO",
-        color: "#795548",
-        trials: [
+            question: "In symptomatic severe tricuspid regurgitation, does tricuspid TEER improve outcomes compared with medical therapy?",
+            result: "Tricuspid TEER improved the hierarchical composite endpoint, mainly driven by better quality of life and TR reduction, with good short-term safety.",
+            takeaways: [
+              "KCCQ quality-of-life improvement was significant.",
+              "TR reduction to moderate or less was much more frequent with TEER.",
+              "Mortality and HF hospitalization differences were not clearly established in the early report.",
+              "Procedural safety was favorable in selected patients."
+            ],
+            whyLandmark: "First major randomized trial supporting transcatheter edge-to-edge repair for severe symptomatic TR.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa2300525"
+          },
           {
             id: "protectaf",
             name: "PROTECT-AF",
+            fullName: "Watchman Left Atrial Appendage System for Embolic Protection in Patients with Atrial Fibrillation",
             year: 2009,
             n: "707",
-            question: "Watchman vs warfarin?",
-            result: "Non-inferior stroke prevention.",
-            pearl: "Established LAAO as alternative to long-term anticoagulation.",
-            examPearl: null
+            question: "Can percutaneous LAA closure replace warfarin for stroke prevention in nonvalvular AF?",
+            result: "Watchman LAA closure was noninferior to warfarin for stroke/systemic embolism/CV death but had early procedural safety concerns.",
+            takeaways: [
+              "Demonstrated proof-of-concept for mechanical stroke prevention in AF.",
+              "Early complications included pericardial effusion and procedural stroke.",
+              "Longer-term follow-up showed improving safety with operator experience.",
+              "Most relevant for patients unsuitable for long-term anticoagulation, though initial trial compared with warfarin-eligible patients."
+            ],
+            whyLandmark: "Created the evidence foundation for modern left atrial appendage occlusion.",
+            pubLink: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(09)61343-X/fulltext"
           }
         ]
       }
@@ -249,168 +377,191 @@ const cardiologyData = [
     title: "Heart Failure",
     icon: "❤️",
     color: "#e84393",
-    description: "HFrEF, HFpEF, device therapy",
+    description: "HFrEF, HFpEF, pharmacotherapy",
     subsections: [
       {
         id: "hfref-medical",
-        title: "HFrEF – Medical Therapy",
+        title: "Foundational HFrEF Pharmacotherapy",
         color: "#e74c3c",
         trials: [
           {
             id: "consensus",
             name: "CONSENSUS",
+            fullName: "Cooperative North Scandinavian Enalapril Survival Study",
             year: 1987,
             n: "253",
-            question: "Enalapril in severe HFrEF?",
-            result: "Reduced mortality.",
-            pearl: "Started the ACE inhibitor era.",
-            examPearl: null
+            question: "Does enalapril reduce mortality in severe heart failure?",
+            result: "Enalapril significantly reduced mortality compared with placebo.",
+            takeaways: [
+              "Six-month mortality: 26% enalapril vs 44% placebo.",
+              "Benefit mainly from reduction in progressive HF death.",
+              "Conducted in very sick HF patients.",
+              "Established neurohormonal blockade as survival therapy."
+            ],
+            whyLandmark: "First major proof that ACE inhibition improves survival in severe HF.",
+            pubLink: "https://www.nejm.org/doi/abs/10.1056/NEJM198706043162301"
           },
           {
             id: "merithf",
             name: "MERIT-HF",
+            fullName: "Metoprolol CR/XL Randomized Intervention Trial in Congestive Heart Failure",
             year: 1999,
             n: "3,991",
-            question: "Metoprolol CR/XL in HFrEF?",
-            result: "Reduced mortality and hospitalization.",
-            pearl: "Confirmed beta-blockers as life-saving therapy.",
-            examPearl: null
+            question: "Does metoprolol CR/XL reduce mortality in chronic HFrEF?",
+            result: "Metoprolol CR/XL reduced all-cause mortality and sudden death compared with placebo.",
+            takeaways: [
+              "Mortality reduced by about 34%.",
+              "Sudden death and death from worsening HF were reduced.",
+              "Reinforced that beta-blockers are beneficial, not harmful, in stable HFrEF.",
+              "Requires careful initiation and titration."
+            ],
+            whyLandmark: "Helped establish beta-blockers as core disease-modifying therapy in HFrEF.",
+            pubLink: "https://pubmed.ncbi.nlm.nih.gov/10376614/"
           },
           {
             id: "rales",
             name: "RALES",
+            fullName: "Randomized Aldactone Evaluation Study",
             year: 1999,
             n: "1,663",
-            question: "Spironolactone in severe HFrEF?",
-            result: "Reduced mortality by ~30%.",
-            pearl: "Established MRAs as standard therapy.",
-            examPearl: null
+            question: "Does spironolactone improve survival in severe HFrEF?",
+            result: "Spironolactone reduced all-cause mortality and HF hospitalization.",
+            takeaways: [
+              "Mortality: 35% spironolactone vs 46% placebo.",
+              "Benefit included fewer deaths from progressive HF and sudden cardiac death.",
+              "Hyperkalemia risk requires renal function and potassium monitoring.",
+              "Conducted before widespread ARNI/SGLT2 inhibitor use."
+            ],
+            whyLandmark: "Established mineralocorticoid receptor antagonists as survival therapy in HFrEF.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJM199909023411001"
           },
           {
             id: "shift",
             name: "SHIFT",
+            fullName: "Systolic Heart Failure Treatment with the If Inhibitor Ivabradine Trial",
             year: 2010,
-            n: "6,558",
-            question: "Ivabradine in HFrEF with HR ≥70 bpm?",
-            result: "Reduced HF hospitalization.",
-            pearl: "Benefit largely driven by HR reduction.",
-            examPearl: null
+            n: "6,505",
+            question: "Does heart-rate reduction with ivabradine improve outcomes in HFrEF patients in sinus rhythm?",
+            result: "Ivabradine reduced CV death or HF hospitalization, mainly by reducing HF hospitalization.",
+            takeaways: [
+              "Benefit was strongest in patients with higher baseline heart rate.",
+              "No clear all-cause mortality reduction.",
+              "Only applies to sinus rhythm, not AF.",
+              "Useful when heart rate remains elevated despite maximally tolerated beta-blocker."
+            ],
+            whyLandmark: "Validated heart rate as a therapeutic target in selected HFrEF patients.",
+            pubLink: "https://pubmed.ncbi.nlm.nih.gov/20801500/"
           },
           {
             id: "paradigmhf",
             name: "PARADIGM-HF",
+            fullName: "Prospective Comparison of ARNI with ACEI to Determine Impact on Global Mortality and Morbidity in Heart Failure",
             year: 2014,
             n: "8,442",
-            question: "Sacubitril/valsartan vs enalapril?",
-            result: "Reduced CV death and HF hospitalization.",
-            pearl: "Replaced ACEi as preferred therapy.",
-            examPearl: null
+            question: "Is sacubitril/valsartan superior to enalapril in HFrEF?",
+            result: "Sacubitril/valsartan reduced CV death or HF hospitalization and reduced all-cause mortality compared with enalapril.",
+            takeaways: [
+              "Trial stopped early for benefit.",
+              "Reduced CV death, HF hospitalization, and all-cause mortality.",
+              "More hypotension; less cough and hyperkalemia than enalapril.",
+              "Run-in phase may limit generalizability to less tolerant patients."
+            ],
+            whyLandmark: "Introduced ARNI as a new foundational therapy replacing ACEI/ARB in many HFrEF patients.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1409077"
           },
           {
             id: "dapahf",
             name: "DAPA-HF",
+            fullName: "Dapagliflozin and Prevention of Adverse Outcomes in Heart Failure",
             year: 2019,
             n: "4,744",
-            question: "Dapagliflozin in HFrEF?",
-            result: "Reduced CV death and HF hospitalization.",
-            pearl: "Benefit independent of diabetes.",
-            examPearl: null
+            question: "Does dapagliflozin improve outcomes in HFrEF regardless of diabetes status?",
+            result: "Dapagliflozin reduced worsening HF or CV death in HFrEF, with benefit regardless of diabetes.",
+            takeaways: [
+              "Primary endpoint: 16.3% vs 21.2%.",
+              "Reduced HF events and CV death.",
+              "Benefit occurred in patients with and without diabetes.",
+              "Good safety profile overall."
+            ],
+            whyLandmark: "Made SGLT2 inhibitors foundational HFrEF therapy beyond glucose lowering.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1911303"
           },
           {
             id: "victoria",
             name: "VICTORIA",
+            fullName: "Vericiguat Global Study in Subjects with Heart Failure with Reduced Ejection Fraction",
             year: 2020,
             n: "5,050",
-            question: "Vericiguat in worsening HFrEF?",
-            result: "Modest reduction in CV death/HF hospitalization.",
-            pearl: "Reserved for high-risk recently decompensated patients.",
-            examPearl: null
+            question: "Does vericiguat improve outcomes in high-risk HFrEF after recent worsening?",
+            result: "Vericiguat modestly reduced CV death or HF hospitalization, mainly through fewer HF hospitalizations.",
+            takeaways: [
+              "Primary endpoint: 35.5% vs 38.5%.",
+              "Absolute event rates were high, so modest relative benefit may still matter.",
+              "No clear mortality reduction alone.",
+              "Studied a sicker post-worsening HF population."
+            ],
+            whyLandmark: "Introduced soluble guanylate cyclase stimulation as an additional option for selected high-risk HFrEF patients.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1915928"
           }
         ]
       },
       {
         id: "hfpef",
-        title: "HFpEF",
+        title: "HFpEF / HFmrEF Trials",
         color: "#27ae60",
         trials: [
           {
             id: "topcat",
             name: "TOPCAT",
+            fullName: "Treatment of Preserved Cardiac Function Heart Failure with an Aldosterone Antagonist",
             year: 2014,
             n: "3,445",
-            question: "Spironolactone in HFpEF?",
-            result: "No overall primary endpoint benefit; fewer HF hospitalizations.",
-            pearl: "Results affected by regional enrollment issues.",
-            examPearl: null,
+            question: "Does spironolactone improve outcomes in HFpEF?",
+            result: "Spironolactone did not significantly reduce the primary composite outcome, though HF hospitalization was reduced.",
+            takeaways: [
+              "Primary endpoint not statistically significant.",
+              "HF hospitalization was lower.",
+              "Major concerns about regional heterogeneity, especially Russia/Georgia vs Americas.",
+              "Hyperkalemia and creatinine rise were more common."
+            ],
+            whyLandmark: "Important negative/neutral HFpEF trial that shaped cautious MRA use in selected HFpEF patients.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1313731",
             flag: "warning"
           },
           {
             id: "paragonhf",
             name: "PARAGON-HF",
+            fullName: "Prospective Comparison of ARNI with ARB Global Outcomes in HFpEF",
             year: 2019,
             n: "4,822",
-            question: "Sacubitril/valsartan vs valsartan in HFpEF?",
-            result: "Missed statistical significance.",
-            pearl: "Signal of benefit in EF closer to 50%.",
-            examPearl: null,
+            question: "Does sacubitril/valsartan reduce HF hospitalization and CV death in HFpEF compared with valsartan?",
+            result: "Sacubitril/valsartan did not significantly reduce total HF hospitalizations and CV death versus valsartan.",
+            takeaways: [
+              "Primary endpoint narrowly missed statistical significance.",
+              "Possible benefit in patients with lower EF range and in women.",
+              "More hypotension and angioedema; less hyperkalemia.",
+              "Helped define the concept of EF spectrum rather than rigid HFpEF cutoffs."
+            ],
+            whyLandmark: "A key HFpEF/HFmrEF trial influencing ARNI use in patients with EF below normal but not classic HFrEF.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1908655",
             flag: "warning"
           },
           {
             id: "emperorpreserved",
             name: "EMPEROR-Preserved",
+            fullName: "Empagliflozin Outcome Trial in Patients with Chronic Heart Failure with Preserved Ejection Fraction",
             year: 2021,
             n: "5,988",
-            question: "Empagliflozin in HFpEF?",
-            result: "Reduced HF hospitalization.",
-            pearl: "First clearly positive HFpEF outcome trial.",
-            examPearl: null
-          }
-        ]
-      },
-      {
-        id: "device-therapy",
-        title: "Device Therapy",
-        color: "#2980b9",
-        trials: [
-          {
-            id: "maditii",
-            name: "MADIT-II",
-            year: 2002,
-            n: "1,232",
-            question: "ICD in prior MI with EF ≤30%?",
-            result: "Reduced all-cause mortality.",
-            pearl: "Established primary-prevention ICD without EP testing.",
-            examPearl: null
-          },
-          {
-            id: "scdheft",
-            name: "SCD-HeFT",
-            year: 2005,
-            n: "2,521",
-            question: "ICD in ischemic/non-ischemic HFrEF?",
-            result: "Reduced mortality.",
-            pearl: "Expanded ICD indications beyond ischemic disease.",
-            examPearl: null
-          },
-          {
-            id: "carehf",
-            name: "CARE-HF",
-            year: 2005,
-            n: "813",
-            question: "CRT in HFrEF with dyssynchrony?",
-            result: "Reduced mortality and hospitalization.",
-            pearl: "Landmark CRT mortality trial.",
-            examPearl: null
-          },
-          {
-            id: "maditrit",
-            name: "MADIT-RIT",
-            year: 2012,
-            n: "1,500",
-            question: "Can ICD programming reduce inappropriate shocks in primary-prevention ICD patients?",
-            result: "High-rate detection (>200 bpm) or delayed therapy significantly reduced inappropriate ICD shocks and reduced all-cause mortality compared with conventional programming.",
-            pearl: "Changed ICD programming worldwide. Modern ICDs are programmed to \"wait longer\" and/or treat only faster VT/VF, reducing unnecessary therapies without increasing syncope.",
-            examPearl: "One of the few device-programming trials showing a mortality benefit from changing ICD settings rather than changing the device itself."
+            question: "Does empagliflozin improve outcomes in HFpEF/HFmrEF?",
+            result: "Empagliflozin reduced CV death or HF hospitalization, mainly by reducing HF hospitalization.",
+            takeaways: [
+              "Benefit was consistent regardless of diabetes.",
+              "Effect mainly driven by fewer HF hospitalizations.",
+              "No clear mortality reduction alone.",
+              "Included EF >40%, therefore HFmrEF and HFpEF."
+            ],
+            whyLandmark: "First clearly positive major outcomes trial of a drug in HFpEF/HFmrEF, establishing SGLT2 inhibitors as core therapy across EF ranges.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa2107038"
           }
         ]
       }
@@ -421,127 +572,275 @@ const cardiologyData = [
     title: "Electrophysiology",
     icon: "⚡",
     color: "#f39c12",
-    description: "AF anticoagulation, rhythm control, ventricular arrhythmia",
+    description: "Devices, AF anticoagulation, rhythm control, ventricular arrhythmia",
     subsections: [
       {
+        id: "device-therapy",
+        title: "ICD / CRT / Device Therapy",
+        color: "#2980b9",
+        trials: [
+          {
+            id: "maditii",
+            name: "MADIT-II",
+            fullName: "Multicenter Automatic Defibrillator Implantation Trial II",
+            year: 2002,
+            n: "1,232",
+            question: "Does prophylactic ICD implantation reduce mortality in prior MI patients with severe LV dysfunction?",
+            result: "ICD therapy reduced all-cause mortality compared with conventional medical therapy.",
+            takeaways: [
+              "Mortality: 14.2% ICD vs 19.8% conventional therapy.",
+              "No EP study or inducibility testing was required.",
+              "Expanded ICD eligibility based on EF and ischemic history.",
+              "Some patients received shocks and device-related complications."
+            ],
+            whyLandmark: "Major foundation for primary-prevention ICD indications in ischemic cardiomyopathy.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa013474"
+          },
+          {
+            id: "scdheft",
+            name: "SCD-HeFT",
+            fullName: "Sudden Cardiac Death in Heart Failure Trial",
+            year: 2005,
+            n: "2,521",
+            question: "In symptomatic HFrEF, does ICD or amiodarone improve survival compared with placebo?",
+            result: "ICD reduced mortality; amiodarone did not improve survival.",
+            takeaways: [
+              "Mortality: 22% ICD vs 29% placebo.",
+              "Amiodarone had no mortality benefit.",
+              "Included ischemic and nonischemic cardiomyopathy.",
+              "ICD benefit strongest in NYHA II compared with NYHA III."
+            ],
+            whyLandmark: "Established broad primary-prevention ICD use in HFrEF.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa043399"
+          },
+          {
+            id: "carehf",
+            name: "CARE-HF",
+            fullName: "Cardiac Resynchronization–Heart Failure Study",
+            year: 2005,
+            n: "813",
+            question: "Does CRT improve morbidity and mortality in selected HF patients with dyssynchrony?",
+            result: "CRT reduced death and HF hospitalization and improved symptoms and LV function.",
+            takeaways: [
+              "Reduced composite of death or unplanned CV hospitalization.",
+              "Improved NYHA class, quality of life, and LV remodeling.",
+              "Demonstrated mortality benefit from CRT pacing.",
+              "Patient selection required dyssynchrony criteria."
+            ],
+            whyLandmark: "Established CRT as disease-modifying device therapy for selected patients with HFrEF and dyssynchrony.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa050496"
+          },
+          {
+            id: "maditrit",
+            name: "MADIT-RIT",
+            fullName: "Multicenter Automatic Defibrillator Implantation Trial–Reduce Inappropriate Therapy",
+            year: 2012,
+            n: "1,500",
+            question: "Can modern ICD programming reduce inappropriate therapy and improve outcomes?",
+            result: "High-rate or delayed ICD therapy programming markedly reduced inappropriate therapy; high-rate programming also reduced mortality.",
+            takeaways: [
+              "Inappropriate therapy reduced by about 79% with high-rate programming and 76% with delayed therapy.",
+              "High-rate therapy was associated with lower mortality.",
+              "Many slower ventricular arrhythmias self-terminated.",
+              "Changed default ICD programming toward delayed/high-rate detection."
+            ],
+            whyLandmark: "Transformed ICD programming from 'treat early' to 'treat only when necessary,' reducing shocks and improving safety.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1211107",
+            examPearl: "One of the few device-programming trials showing a mortality benefit from changing ICD settings rather than changing the device itself."
+          }
+        ]
+      },
+      {
         id: "af-anticoag",
-        title: "AF – Anticoagulation",
+        title: "Anticoagulation / AF Stroke Prevention",
         color: "#e74c3c",
         trials: [
           {
             id: "baataf",
             name: "BAATAF",
+            fullName: "Boston Area Anticoagulation Trial for Atrial Fibrillation",
             year: 1990,
             n: "420",
-            question: "Warfarin vs no anticoagulation in AF?",
-            result: "Markedly reduced stroke.",
-            pearl: "Helped establish anticoagulation as standard of care.",
-            examPearl: null
+            question: "Does warfarin reduce stroke risk in nonrheumatic AF?",
+            result: "Low-intensity warfarin markedly reduced stroke compared with control therapy.",
+            takeaways: [
+              "Warfarin reduced stroke risk substantially.",
+              "Minor bleeding was more frequent.",
+              "Major bleeding was relatively uncommon in the trial.",
+              "Control group management reflected older practice."
+            ],
+            whyLandmark: "One of the foundational trials establishing anticoagulation for stroke prevention in AF.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJM199011293232201"
           },
           {
             id: "rely",
             name: "RE-LY",
+            fullName: "Randomized Evaluation of Long-Term Anticoagulation Therapy",
             year: 2009,
             n: "18,113",
-            question: "Dabigatran vs warfarin?",
-            result: "Non-inferior/superior stroke prevention with less ICH.",
-            pearl: "Started the DOAC era.",
-            examPearl: null
+            question: "Is dabigatran noninferior or superior to warfarin for stroke prevention in AF?",
+            result: "Dabigatran 150 mg BID was superior to warfarin for stroke/systemic embolism; 110 mg BID was noninferior with less bleeding.",
+            takeaways: [
+              "Both dabigatran doses reduced intracranial hemorrhage.",
+              "150 mg dose had better ischemic protection.",
+              "GI bleeding was more common with higher-dose dabigatran.",
+              "Open-label warfarin design was a limitation."
+            ],
+            whyLandmark: "First major DOAC trial to challenge warfarin and launch the modern DOAC era.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa0905561"
           },
           {
             id: "aristotle",
             name: "ARISTOTLE",
+            fullName: "Apixaban for Reduction in Stroke and Other Thromboembolic Events in Atrial Fibrillation",
             year: 2011,
             n: "18,201",
-            question: "Apixaban vs warfarin?",
-            result: "Reduced stroke, bleeding, and mortality.",
-            pearl: "Often considered the strongest DOAC trial.",
-            examPearl: null
+            question: "Is apixaban superior to warfarin for stroke prevention in AF?",
+            result: "Apixaban reduced stroke/systemic embolism, major bleeding, and mortality compared with warfarin.",
+            takeaways: [
+              "Lower intracranial bleeding than warfarin.",
+              "Lower major bleeding overall.",
+              "Mortality benefit was seen.",
+              "Strong safety and efficacy profile made apixaban widely adopted."
+            ],
+            whyLandmark: "Established apixaban as one of the most favorable DOACs for AF stroke prevention.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1107039"
           },
           {
             id: "river",
             name: "RIVER",
+            fullName: "Rivaroxaban in Patients with Atrial Fibrillation and a Bioprosthetic Mitral Valve",
             year: 2020,
             n: "1,005",
-            question: "Rivaroxaban vs warfarin in AF + bioprosthetic MVR?",
-            result: "Non-inferior efficacy and safety.",
-            pearl: "Supports DOAC use in bioprosthetic mitral valves.",
-            examPearl: null
+            question: "Is rivaroxaban noninferior to warfarin in AF patients with a bioprosthetic mitral valve?",
+            result: "Rivaroxaban was noninferior to warfarin for death, major CV events, or major bleeding.",
+            takeaways: [
+              "Important because many pivotal DOAC trials excluded valve prostheses.",
+              "Mostly bioprosthetic mitral valves, not mechanical valves.",
+              "Stroke was numerically lower with rivaroxaban.",
+              "Open-label design and regional enrollment limit generalizability."
+            ],
+            whyLandmark: "Supported DOAC use in selected AF patients with bioprosthetic mitral valves, distinct from mechanical valves.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa2029603"
           },
           {
             id: "augustus",
             name: "AUGUSTUS",
+            fullName: "Antithrombotic Therapy after Acute Coronary Syndrome or PCI in Atrial Fibrillation",
             year: 2019,
             n: "4,614",
-            question: "Best antithrombotic regimen in AF + ACS/PCI?",
-            result: "Apixaban reduced bleeding; aspirin increased bleeding.",
-            pearl: "Supports DOAC + P2Y12 without routine aspirin.",
-            examPearl: null
+            question: "In AF with ACS/PCI on P2Y12 therapy, what antithrombotic strategy reduces bleeding?",
+            result: "Apixaban caused less bleeding than VKA, and aspirin caused more bleeding than placebo without clear ischemic benefit.",
+            takeaways: [
+              "2×2 factorial design: apixaban vs VKA and aspirin vs placebo.",
+              "Apixaban reduced major or clinically relevant nonmajor bleeding.",
+              "Aspirin nearly doubled bleeding risk.",
+              "Most patients received clopidogrel.",
+              "Supports early aspirin discontinuation in many AF-PCI patients."
+            ],
+            whyLandmark: "Helped define modern 'dual therapy' strategies after PCI/ACS in AF.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1817083"
           }
         ]
       },
       {
         id: "af-rhythm",
-        title: "AF – Rhythm Control",
-        color: "#2980b9",
+        title: "AF Rhythm Control / Ablation / Risk Factor Modification",
+        color: "#16a085",
         trials: [
           {
             id: "castleaf",
             name: "CASTLE-AF",
+            fullName: "Catheter Ablation versus Standard Conventional Therapy in Patients with LV Dysfunction and AF",
             year: 2018,
             n: "363",
-            question: "AF ablation in HFrEF?",
-            result: "Reduced mortality and HF hospitalization.",
-            pearl: "Most important AF ablation outcome trial.",
-            examPearl: null
+            question: "In AF with HFrEF, does catheter ablation improve hard outcomes compared with medical therapy?",
+            result: "Catheter ablation reduced death or HF hospitalization compared with medical therapy.",
+            takeaways: [
+              "Primary endpoint: 28.5% ablation vs 44.6% control.",
+              "All-cause mortality and HF hospitalization were both reduced.",
+              "Small, highly selected population.",
+              "Required implanted device for rhythm monitoring."
+            ],
+            whyLandmark: "Provided strong evidence that AF ablation can improve outcomes in selected HFrEF patients.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1707855"
           },
           {
             id: "cabana",
             name: "CABANA",
+            fullName: "Catheter Ablation vs Antiarrhythmic Drug Therapy for Atrial Fibrillation",
             year: 2019,
             n: "2,204",
-            question: "AF ablation vs drug therapy?",
-            result: "No significant mortality benefit (ITT).",
-            pearl: "Improved rhythm control and quality of life.",
-            examPearl: null,
+            question: "Does catheter ablation reduce major clinical outcomes compared with drug therapy in AF?",
+            result: "In intention-to-treat analysis, ablation did not significantly reduce the primary composite outcome, but improved AF recurrence and quality of life.",
+            takeaways: [
+              "Primary outcome: 8.0% ablation vs 9.2% drug therapy; not statistically significant.",
+              "AF recurrence and CV hospitalization were lower with ablation.",
+              "Major crossover from drug therapy to ablation diluted ITT results.",
+              "Quality-of-life benefit was clinically important."
+            ],
+            whyLandmark: "Clarified that AF ablation is excellent for rhythm control and symptoms, while hard-outcome benefit depends on patient selection and interpretation.",
+            pubLink: "https://jamanetwork.com/journals/jama/fullarticle/2728676",
             flag: "warning"
           },
           {
             id: "eastafnet4",
             name: "EAST-AFNET 4",
+            fullName: "Early Treatment of Atrial Fibrillation for Stroke Prevention Trial",
             year: 2020,
             n: "2,789",
-            question: "Early rhythm vs usual care?",
-            result: "Reduced CV death, stroke, and HF hospitalization.",
-            pearl: "Changed AF guidelines toward early rhythm control.",
-            examPearl: null
+            question: "Does early rhythm control improve CV outcomes in recently diagnosed AF?",
+            result: "Early rhythm control reduced CV death, stroke, or hospitalization for HF/ACS compared with usual care.",
+            takeaways: [
+              "Rhythm control included antiarrhythmic drugs and ablation.",
+              "Benefit was seen early in the AF disease course.",
+              "Challenged older 'rate control is enough' interpretations.",
+              "Rhythm-control-related adverse events were more frequent, but overall clinical benefit favored early rhythm control."
+            ],
+            whyLandmark: "Changed AF thinking toward early rhythm control in appropriate patients, not rhythm control only after symptom failure.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa2019422"
           },
           {
             id: "legacy",
             name: "LEGACY",
+            fullName: "Long-Term Effect of Goal-Directed Weight Management in an Atrial Fibrillation Cohort",
             year: 2015,
             n: "355",
-            question: "Does weight loss reduce AF burden?",
-            result: "≥10% weight loss markedly reduced AF recurrence.",
-            pearl: "Risk factor modification became a pillar of AF care.",
-            examPearl: null
+            question: "Does sustained weight loss reduce AF burden and improve rhythm outcomes?",
+            result: "Sustained weight loss ≥10% was associated with markedly greater arrhythmia-free survival and reduced AF burden.",
+            takeaways: [
+              "Not a randomized trial.",
+              "Weight loss ≥10% had the strongest association with AF freedom.",
+              "Weight fluctuation reduced benefit.",
+              "Supports aggressive risk-factor modification as part of AF care."
+            ],
+            whyLandmark: "Helped establish obesity and risk-factor management as central to AF rhythm-control success.",
+            pubLink: "https://www.jacc.org/doi/10.1016/j.jacc.2015.03.002"
           }
         ]
       },
       {
         id: "ventricular-arrhythmia",
-        title: "Ventricular Arrhythmia",
-        color: "#e74c3c",
+        title: "Ventricular Arrhythmia Pharmacology / Safety",
+        color: "#c0392b",
         trials: [
           {
             id: "cast",
             name: "CAST",
+            fullName: "Cardiac Arrhythmia Suppression Trial",
             year: 1989,
-            n: "2,309",
-            question: "Class IC drugs after MI?",
-            result: "Increased mortality despite suppressing PVCs.",
-            pearl: "One of the most important negative trials in cardiology history.",
-            examPearl: null
+            n: "1,455",
+            question: "Does suppressing asymptomatic ventricular ectopy after MI with class Ic drugs improve survival?",
+            result: "Encainide and flecainide increased arrhythmic death/cardiac arrest and total mortality.",
+            takeaways: [
+              "Suppression of PVCs did not translate into better outcomes.",
+              "Arrhythmic death/cardiac arrest increased.",
+              "Total mortality increased.",
+              "Trial stopped early for harm.",
+              "Classic example of surrogate endpoint failure."
+            ],
+            whyLandmark: "Transformed arrhythmia management and showed that antiarrhythmic suppression can be dangerous despite improving ECG appearance.",
+            pubLink: "https://www.nejm.org/doi/abs/10.1056/NEJM198908103210629"
           }
         ]
       }
@@ -556,92 +855,145 @@ const cardiologyData = [
     subsections: [
       {
         id: "lifestyle",
-        title: "Lifestyle / Nutrition",
+        title: "Diet / Lifestyle / Metabolic Risk",
         color: "#2980b9",
         trials: [
           {
             id: "predimed",
             name: "PREDIMED",
+            fullName: "Prevención con Dieta Mediterránea",
             year: 2013,
             n: "7,447",
-            question: "Does a Mediterranean diet reduce cardiovascular events in high-risk individuals without established CVD?",
-            result: "Mediterranean diet supplemented with extra-virgin olive oil or nuts reduced major cardiovascular events compared with a low-fat diet.",
-            pearl: "One of the strongest trials supporting dietary intervention for cardiovascular prevention. Demonstrated that diet can reduce \"hard\" cardiovascular outcomes, not just risk factors.",
+            question: "Does a Mediterranean diet reduce major CV events in high-risk primary prevention?",
+            result: "Mediterranean diet supplemented with extra-virgin olive oil or nuts reduced major CV events compared with low-fat diet advice.",
+            takeaways: [
+              "Primary prevention population at high CV risk.",
+              "Benefit seen for composite of MI, stroke, or CV death.",
+              "Randomization irregularities led to 2013 article retraction and corrected 2018 republication.",
+              "Corrected analyses still supported benefit."
+            ],
+            whyLandmark: "Most influential randomized dietary trial supporting Mediterranean diet for CV prevention.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1800389",
+            pubLink2: "https://www.nejm.org/doi/full/10.1056/NEJMoa1200303",
             examPearl: "The original 2013 publication was retracted and republished in 2018 due to randomization irregularities, but the overall conclusions remained unchanged."
+          },
+          {
+            id: "stampede",
+            name: "STAMPEDE",
+            fullName: "Surgical Treatment and Medications Potentially Eradicate Diabetes Efficiently",
+            year: 2012,
+            n: "150",
+            question: "Does bariatric surgery improve diabetes control more than intensive medical therapy?",
+            result: "Bariatric surgery plus intensive medical therapy achieved superior and durable glycemic control compared with medical therapy alone.",
+            takeaways: [
+              "Gastric bypass and sleeve gastrectomy outperformed medical therapy.",
+              "Benefits persisted at 3 and 5 years.",
+              "Improved weight, medication burden, and cardiometabolic risk factors.",
+              "Not powered for hard CV outcomes."
+            ],
+            whyLandmark: "Established metabolic surgery as a powerful diabetes and cardiometabolic risk intervention.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1200225",
+            pubLink2: "https://www.nejm.org/doi/full/10.1056/NEJMoa1600869"
           }
         ]
       },
       {
         id: "lipids",
-        title: "Lipid Management",
+        title: "Lipid Lowering / LDL Hypothesis",
         color: "#e74c3c",
         trials: [
           {
             id: "4s",
             name: "4S",
+            fullName: "Scandinavian Simvastatin Survival Study",
             year: 1994,
             n: "4,444",
-            question: "Simvastatin in CAD?",
-            result: "Reduced mortality and major CV events.",
-            pearl: "Started the statin era.",
-            examPearl: null
+            question: "Does simvastatin reduce mortality in patients with established CHD?",
+            result: "Simvastatin reduced all-cause mortality, coronary death, and major coronary events.",
+            takeaways: [
+              "All-cause mortality reduced: 8.2% vs 11.5%.",
+              "Major coronary events and revascularization reduced.",
+              "No excess non-CV mortality signal.",
+              "Confirmed LDL lowering improves survival in secondary prevention."
+            ],
+            whyLandmark: "The trial that firmly established statins as lifesaving therapy in secondary prevention.",
+            pubLink: "https://pubmed.ncbi.nlm.nih.gov/7968073/"
           },
           {
             id: "proveit",
             name: "PROVE-IT TIMI 22",
+            fullName: "Pravastatin or Atorvastatin Evaluation and Infection Therapy–Thrombolysis in Myocardial Infarction 22",
             year: 2004,
             n: "4,162",
-            question: "Intensive vs moderate statin after ACS?",
-            result: "Intensive therapy superior.",
-            pearl: "\"Lower is better\" for LDL.",
-            examPearl: null
+            question: "After ACS, is intensive statin therapy superior to moderate statin therapy?",
+            result: "Atorvastatin 80 mg reduced death or major CV events compared with pravastatin 40 mg.",
+            takeaways: [
+              "Supported 'lower LDL is better' after ACS.",
+              "Benefit emerged early.",
+              "High-intensity statin became default after ACS.",
+              "Compared atorvastatin 80 mg vs pravastatin 40 mg."
+            ],
+            whyLandmark: "Established high-intensity statin therapy as standard after ACS.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa040583"
           },
           {
             id: "improveit",
             name: "IMPROVE-IT",
+            fullName: "Improved Reduction of Outcomes: Vytorin Efficacy International Trial",
             year: 2015,
             n: "18,144",
-            question: "Add ezetimibe to statin after ACS?",
-            result: "Further LDL lowering reduced events.",
-            pearl: "First proof that non-statin LDL lowering improves outcomes.",
-            examPearl: null
+            question: "Does adding ezetimibe to statin therapy improve CV outcomes after ACS?",
+            result: "Ezetimibe plus simvastatin modestly reduced CV events compared with simvastatin alone.",
+            takeaways: [
+              "Achieved lower LDL than statin alone.",
+              "Primary endpoint reduction was statistically significant but modest.",
+              "No major safety penalty.",
+              "Benefit supported LDL lowering beyond statins."
+            ],
+            whyLandmark: "First outcomes trial showing that nonstatin LDL lowering added to statin therapy improves CV outcomes.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1410489"
           },
           {
             id: "fourier",
             name: "FOURIER",
+            fullName: "Further Cardiovascular Outcomes Research with PCSK9 Inhibition in Subjects with Elevated Risk",
             year: 2017,
             n: "27,564",
-            question: "Evolocumab in ASCVD?",
-            result: "Reduced MACE with very low LDL levels.",
-            pearl: "Established PCSK9 inhibitors.",
-            examPearl: null
+            question: "Does evolocumab reduce CV events when added to statins in ASCVD?",
+            result: "Evolocumab markedly lowered LDL and reduced major CV events, without clear mortality reduction over short follow-up.",
+            takeaways: [
+              "LDL reduced by about 59%.",
+              "Primary endpoint reduced.",
+              "Key secondary endpoint of CV death/MI/stroke reduced.",
+              "No significant all-cause or CV mortality reduction in median 2.2 years.",
+              "Very low LDL levels appeared safe during trial follow-up."
+            ],
+            whyLandmark: "Confirmed the clinical benefit of PCSK9 inhibition and strengthened the 'lower LDL is better' paradigm.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1615664"
           }
         ]
       },
       {
         id: "primary-prevention",
-        title: "Primary Prevention / Metabolic",
-        color: "#2980b9",
+        title: "Aspirin / Primary Prevention",
+        color: "#8e44ad",
         trials: [
           {
             id: "ascend",
             name: "ASCEND",
+            fullName: "A Study of Cardiovascular Events in Diabetes",
             year: 2018,
             n: "15,480",
-            question: "Aspirin for primary prevention in diabetes?",
-            result: "Reduced vascular events but increased major bleeding.",
-            pearl: "No routine aspirin for most diabetics.",
-            examPearl: null
-          },
-          {
-            id: "stampede",
-            name: "STAMPEDE",
-            year: 2012,
-            n: "150",
-            question: "Bariatric surgery vs intensive medical therapy in obesity/T2DM?",
-            result: "Greater weight loss and glycemic control with surgery.",
-            pearl: "Landmark cardiometabolic intervention study.",
-            examPearl: null
+            question: "Does aspirin provide net benefit for primary prevention in diabetes?",
+            result: "Aspirin reduced serious vascular events but increased major bleeding, producing a narrow or neutral net benefit.",
+            takeaways: [
+              "Serious vascular events reduced modestly.",
+              "Major bleeding increased, mainly GI and extracranial bleeding.",
+              "Absolute benefit and harm were similar.",
+              "Reinforced individualized aspirin use in primary prevention."
+            ],
+            whyLandmark: "Helped move guidelines away from routine aspirin for primary prevention, even in diabetes.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1804988"
           }
         ]
       }
