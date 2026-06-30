@@ -25,6 +25,21 @@
   --transition: 0.22s ease;
 }
 
+/* ── LIGHT MODE OVERRIDES ────────────────────────────────── */
+body.light {
+  --navy-950: #f0f4fa;
+  --navy-900: #e8eef8;
+  --navy-800: #dde5f5;
+  --navy-700: #c8d4ec;
+  --navy-600: #b0c0e0;
+  --card-bg:  #ffffff;
+  --card-border: rgba(0,0,0,0.09);
+  --shadow:   0 4px 24px rgba(0,0,0,0.1);
+  --white:    #1a2540;
+  --white-dim:#4a5a80;
+  --accent-red: #c0392b;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
@@ -35,6 +50,39 @@ body {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
   min-height: 100vh;
   line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ── THEME TOGGLE ────────────────────────────────────────── */
+#theme-toggle {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+#theme-toggle:hover {
+  background: rgba(192,57,43,0.25);
+  border-color: rgba(192,57,43,0.5);
+  transform: scale(1.1);
+}
+
+body.light #theme-toggle {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.15);
+}
+
+body.light #theme-toggle:hover {
+  background: rgba(192,57,43,0.12);
+  border-color: rgba(192,57,43,0.4);
 }
 
 /* ── HEADER ─────────────────────────────────────────────── */
@@ -46,6 +94,11 @@ body {
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light #site-header {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 }
 
 .header-inner {
@@ -761,3 +814,128 @@ body {
 ::-webkit-scrollbar-track { background: var(--navy-900); }
 ::-webkit-scrollbar-thumb { background: var(--navy-600); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--red-500); }
+
+/* ── LIGHT MODE COMPONENT OVERRIDES ─────────────────────── */
+body.light #search-input {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.15);
+  color: var(--white);
+}
+
+body.light #search-input::placeholder { color: var(--white-dim); }
+
+body.light #search-input:focus {
+  border-color: rgba(192,57,43,0.5);
+  background: rgba(0,0,0,0.07);
+}
+
+body.light .section-card {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+body.light .section-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+}
+
+body.light .subsection-card {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.1);
+}
+
+body.light .trial-card {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+body.light .trial-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  border-color: rgba(192,57,43,0.3);
+}
+
+body.light .trial-question {
+  color: #5a6a90;
+  border-left-color: rgba(192,57,43,0.4);
+}
+
+body.light .view-title { color: var(--white); }
+body.light .view-subtitle { color: var(--white-dim); }
+
+body.light .back-btn {
+  background: rgba(192,57,43,0.08);
+  border-color: rgba(192,57,43,0.25);
+  color: #8b0000;
+}
+
+body.light .back-btn:hover {
+  background: rgba(192,57,43,0.15);
+  border-color: rgba(192,57,43,0.5);
+}
+
+body.light .home-intro h2 {
+  background: linear-gradient(135deg, #1a2540 30%, #c0392b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.light .section-color-bar {
+  background: rgba(0,0,0,0.04);
+  color: var(--white-dim);
+}
+
+body.light #modal-overlay {
+  background: rgba(80,100,140,0.45);
+}
+
+body.light #modal-box {
+  background: linear-gradient(160deg, #f5f8ff 0%, #edf2fb 100%);
+  border-color: rgba(192,57,43,0.25);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18), 0 0 0 1px rgba(192,57,43,0.15);
+}
+
+body.light .modal-trial-name { color: #1a2540; }
+body.light .modal-full-name { color: #8090b8; }
+body.light .modal-path { color: #8090b8; }
+
+body.light .modal-divider { border-top-color: rgba(0,0,0,0.1); }
+
+body.light .modal-section-label { color: #6070a0; }
+
+body.light .modal-question { color: #1a2540; }
+
+body.light .modal-result { color: #2a3a6a; }
+
+body.light .modal-takeaways li { color: #2a3a6a; }
+
+body.light .modal-why {
+  color: #5a3a00;
+  background: rgba(240,192,64,0.1);
+  border-left-color: rgba(200,140,0,0.5);
+}
+
+body.light .modal-n-badge {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.13);
+  color: #4a5a80;
+}
+
+body.light .search-result-item {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.1);
+}
+
+body.light .sri-question { color: #6070a0; }
+
+body.light #modal-close {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.12);
+  color: #4a5a80;
+}
+
+body.light #modal-close:hover {
+  background: rgba(192,57,43,0.12);
+  color: #8b0000;
+}

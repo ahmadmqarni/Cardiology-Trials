@@ -325,5 +325,21 @@ searchInput.addEventListener('input', e => {
   }, 280);
 });
 
+// ── THEME TOGGLE ──────────────────────────────────────────────
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon   = document.getElementById('theme-icon');
+
+function applyTheme(light) {
+  document.body.classList.toggle('light', light);
+  themeIcon.textContent = light ? '🌙' : '☀️';
+  localStorage.setItem('ct-theme', light ? 'light' : 'dark');
+}
+
+themeToggle.addEventListener('click', () => {
+  applyTheme(!document.body.classList.contains('light'));
+});
+
+applyTheme(localStorage.getItem('ct-theme') === 'light');
+
 // ── INIT ──────────────────────────────────────────────────────
 render();
