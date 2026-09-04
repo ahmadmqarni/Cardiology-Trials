@@ -56,6 +56,9 @@ function renderBreadcrumb() {
     html += `<span class="sep">›</span>
              <span class="crumb active">Search: "${escape(state.searchQuery)}"</span>`;
   }
+  if (state.view === 'quiz-pick' || state.view === 'quiz-card' || state.view === 'quiz-end') {
+    html += `<span class="sep">›</span><span class="crumb active">Quiz Mode</span>`;
+  }
   breadcrumb.innerHTML = html;
 }
 
@@ -86,13 +89,24 @@ function renderHome() {
       </div>`;
   }).join('');
 
+  const quizCard = `
+    <div class="section-card quiz-card" data-action="goto-quiz">
+      <span class="section-card-icon">🧠</span>
+      <h2>Quiz Mode</h2>
+      <p>Test your knowledge with flashcards. Choose categories, flip cards, and track what you know.</p>
+      <div class="section-card-meta">
+        <span class="section-card-count quiz-card-label">Challenge yourself →</span>
+        <span class="section-card-arrow quiz-arrow">⚡</span>
+      </div>
+    </div>`;
+
   return `
     <div class="home-intro">
       <h2>Landmark Cardiology Trials</h2>
       <p>A curated reference for Cardiology Fellows — explore by topic, browse by subtopic, or search any trial.</p>
       <span class="trial-count-badge">${totalTrials()} landmark trials</span>
     </div>
-    <div class="section-grid">${cards}</div>`;
+    <div class="section-grid">${cards}${quizCard}</div>`;
 }
 
 // ── SECTION VIEW ──────────────────────────────────────────────
@@ -267,6 +281,146 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
+// ── QUIZ STATE ────────────────────────────────────────────────
+const quiz = {
+  deck: [],
+  index: 0,
+  known: 0,
+  review: [],
+  revealed: false,
+  phase: 'pick'   // pick | cards | end
+};
+
+function buildDeck(sectionIds) {
+  const all = [];
+  cardiologyData.forEach(sec => {
+    if (!sectionIds.includes(sec.id)) return;
+    sec.subsections.forEach(sub => {
+      sub.trials.forEach(t => all.push({ trial: t, sec, sub }));
+    });
+  });
+  // Fisher-Yates shuffle
+  for (let i = all.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [all[i], all[j]] = [all[j], all[i]];
+  }
+  return all;
+}
+
+// ── QUIZ: CATEGORY PICKER ─────────────────────────────────────
+function renderQuizPick() {
+  const rows = cardiologyData.map(sec => {
+    const count = sec.subsections.reduce((a, s) => a + s.trials.length, 0);
+    return `
+      <label class="quiz-pick-row" style="--qcolor:${sec.color}">
+        <input type="checkbox" class="quiz-pick-cb" value="${sec.id}" checked>
+        <span class="quiz-pick-icon">${sec.icon}</span>
+        <span class="quiz-pick-title">${escape(sec.title)}</span>
+        <span class="quiz-pick-count">${count} trials</span>
+      </label>`;
+  }).join('');
+
+  return `
+    <div class="quiz-pick-wrap">
+      <div class="quiz-pick-header">
+        <div class="quiz-pick-emoji">🧠</div>
+        <h2>Quiz Mode</h2>
+        <p>Select the categories you want to be tested on, then start your session.</p>
+      </div>
+      <div class="quiz-pick-list">${rows}</div>
+      <div class="quiz-pick-actions">
+        <button class="quiz-start-btn" data-action="quiz-start">Start Quiz ⚡</button>
+        <button class="back-btn" data-nav="home">← Back</button>
+      </div>
+    </div>`;
+}
+
+// ── QUIZ: FLASHCARD ───────────────────────────────────────────
+function renderQuizCard() {
+  const { deck, index, known, review, revealed } = quiz;
+  const total   = deck.length;
+  const current = deck[index];
+  const { trial, sec, sub } = current;
+  const progress = Math.round((index / total) * 100);
+
+  const takeawaysHtml = trial.takeaways && trial.takeaways.length
+    ? `<ul class="modal-takeaways qz-takeaways">${trial.takeaways.map(t => `<li>${escape(t)}</li>`).join('')}</ul>`
+    : '';
+
+  const whyHtml = trial.whyLandmark
+    ? `<div class="modal-why qz-why">${escape(trial.whyLandmark)}</div>`
+    : '';
+
+  const frontFace = `
+    <div class="qz-label">Trial Question</div>
+    <div class="qz-n qz-n-front">N = <strong>${escape(trial.n)}</strong> patients</div>
+    <div class="qz-question qz-question-front">${escape(trial.question)}</div>
+    <button class="qz-reveal-btn" data-action="quiz-reveal">Reveal Answer ↓</button>`;
+
+  const backFace = `
+    <div class="qz-label">Trial</div>
+    <div class="qz-trial-name">${escape(trial.name)} <span class="qz-year">${trial.year}</span></div>
+    ${trial.fullName ? `<div class="qz-full-name">${escape(trial.fullName)}</div>` : ''}
+    <div class="qz-n">N = <strong>${escape(trial.n)}</strong></div>
+    <div class="qz-divider"></div>
+    <div class="qz-label">Trial Question</div>
+    <div class="qz-question">${escape(trial.question)}</div>
+    <div class="qz-divider"></div>
+    <div class="qz-label qz-result-label">Result</div>
+    <div class="qz-result">${escape(trial.result)}</div>
+    ${takeawaysHtml}
+    ${whyHtml}
+    <div class="qz-judge">
+      <button class="qz-btn qz-review" data-action="quiz-review">✗ Review Again</button>
+      <button class="qz-btn qz-known"  data-action="quiz-known">✓ Got It</button>
+    </div>`;
+
+  return `
+    <div class="quiz-session-wrap">
+      <div class="qz-topbar">
+        <button class="back-btn qz-exit" data-action="quiz-exit">← Exit Quiz</button>
+        <div class="qz-stats">
+          <span class="qz-stat-known">✓ ${known}</span>
+          <span class="qz-stat-review">✗ ${review.length}</span>
+          <span class="qz-stat-pos">${index + 1} / ${total}</span>
+        </div>
+      </div>
+      <div class="qz-progress-bar"><div class="qz-progress-fill" style="width:${progress}%"></div></div>
+      <div class="qz-path">${escape(sec.title)} › ${escape(sub.title)}</div>
+      <div class="qz-card ${revealed ? 'revealed' : ''}">
+        ${revealed ? backFace : frontFace}
+      </div>
+    </div>`;
+}
+
+// ── QUIZ: END SCREEN ──────────────────────────────────────────
+function renderQuizEnd() {
+  const total   = quiz.deck.length;
+  const known   = quiz.known;
+  const missed  = quiz.review.length;
+  const pct     = Math.round((known / total) * 100);
+
+  let emoji = pct >= 90 ? '🏆' : pct >= 70 ? '💪' : pct >= 50 ? '📚' : '🔄';
+  let msg   = pct >= 90 ? 'Outstanding!' : pct >= 70 ? 'Solid work!' : pct >= 50 ? 'Keep studying!' : 'More review needed';
+
+  const retryBtn = missed > 0
+    ? `<button class="quiz-start-btn qz-retry-btn" data-action="quiz-retry">Retry Missed (${missed}) ↻</button>`
+    : '';
+
+  return `
+    <div class="quiz-end-wrap">
+      <div class="quiz-end-emoji">${emoji}</div>
+      <h2 class="quiz-end-title">${msg}</h2>
+      <div class="quiz-end-score">${pct}%</div>
+      <div class="quiz-end-detail">${known} known · ${missed} to review · ${total} total</div>
+      <div class="quiz-end-actions">
+        ${retryBtn}
+        <button class="quiz-start-btn qz-new-btn" data-action="goto-quiz">New Session</button>
+        <button class="back-btn" data-nav="home">← Home</button>
+      </div>
+    </div>`;
+}
+
 // ── RENDER ────────────────────────────────────────────────────
 function render() {
   let html = '';
@@ -274,6 +428,9 @@ function render() {
   else if (state.view === 'section')    html = renderSection(state.sectionId);
   else if (state.view === 'subsection') html = renderSubsection(state.sectionId, state.subsectionId);
   else if (state.view === 'search')     html = renderSearch(state.searchQuery);
+  else if (state.view === 'quiz-pick')  html = renderQuizPick();
+  else if (state.view === 'quiz-card')  html = renderQuizCard();
+  else if (state.view === 'quiz-end')   html = renderQuizEnd();
   app.innerHTML = html;
   renderBreadcrumb();
 }
@@ -286,6 +443,47 @@ document.addEventListener('click', e => {
     if (action === 'goto-section')    navigate('section', el.dataset.section);
     if (action === 'goto-subsection') navigate('subsection', el.dataset.section, el.dataset.subsection);
     if (action === 'open-modal')      openModal(el.dataset.section, el.dataset.subsection, el.dataset.trial);
+    if (action === 'goto-quiz')       { state.view = 'quiz-pick'; render(); window.scrollTo({top:0}); }
+    if (action === 'quiz-start') {
+      const checked = [...document.querySelectorAll('.quiz-pick-cb:checked')].map(cb => cb.value);
+      if (!checked.length) return;
+      quiz.deck    = buildDeck(checked);
+      quiz.index   = 0;
+      quiz.known   = 0;
+      quiz.review  = [];
+      quiz.revealed = false;
+      quiz.phase   = 'cards';
+      state.view   = 'quiz-card';
+      render(); window.scrollTo({top:0});
+    }
+    if (action === 'quiz-reveal') {
+      quiz.revealed = true;
+      render(); window.scrollTo({top:0});
+    }
+    if (action === 'quiz-known') {
+      quiz.known++;
+      quiz.index++;
+      quiz.revealed = false;
+      if (quiz.index >= quiz.deck.length) { state.view = 'quiz-end'; }
+      render(); window.scrollTo({top:0});
+    }
+    if (action === 'quiz-review') {
+      quiz.review.push(quiz.deck[quiz.index]);
+      quiz.index++;
+      quiz.revealed = false;
+      if (quiz.index >= quiz.deck.length) { state.view = 'quiz-end'; }
+      render(); window.scrollTo({top:0});
+    }
+    if (action === 'quiz-retry') {
+      quiz.deck    = [...quiz.review];
+      quiz.index   = 0;
+      quiz.known   = 0;
+      quiz.review  = [];
+      quiz.revealed = false;
+      state.view   = 'quiz-card';
+      render(); window.scrollTo({top:0});
+    }
+    if (action === 'quiz-exit') { state.view = 'quiz-pick'; render(); window.scrollTo({top:0}); }
     return;
   }
 
@@ -303,8 +501,21 @@ modalOverlay.addEventListener('click', e => {
   if (e.target === modalOverlay) closeModal();
 });
 
-// Escape key closes modal
+// Escape key closes modal / exits quiz
 document.addEventListener('keydown', e => {
+  if (state.view === 'quiz-card') {
+    if (e.key === ' ' && !quiz.revealed) {
+      e.preventDefault();
+      quiz.revealed = true; render(); window.scrollTo({top:0});
+    } else if (e.key === 'ArrowRight' && quiz.revealed) {
+      document.querySelector('[data-action="quiz-known"]')?.click();
+    } else if (e.key === 'ArrowLeft' && quiz.revealed) {
+      document.querySelector('[data-action="quiz-review"]')?.click();
+    } else if (e.key === 'Escape') {
+      state.view = 'quiz-pick'; render(); window.scrollTo({top:0});
+    }
+    return;
+  }
   if (e.key === 'Escape') closeModal();
 });
 
