@@ -369,6 +369,57 @@ const cardiologyData = [
             pubLink: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(09)61343-X/fulltext"
           }
         ]
+      },
+      {
+        id: "periop",
+        title: "Perioperative Coronary Revascularization",
+        color: "#8e44ad",
+        trials: [
+          {
+            id: "carp",
+            name: "CARP",
+            fullName: "Coronary Artery Revascularization Prophylaxis Trial",
+            year: 2004,
+            n: "510",
+            question: "In patients with stable CAD undergoing elective major vascular surgery, does prophylactic coronary revascularization before surgery improve outcomes?",
+            result: "Routine coronary revascularization before elective major vascular surgery did not reduce long-term mortality or perioperative outcomes compared with medical therapy.",
+            takeaways: [
+              "No mortality benefit from routine prophylactic revascularization.",
+              "No major reduction in perioperative MI or early postoperative death.",
+              "Supported a more conservative, evidence-based preoperative strategy.",
+              "Established that revascularization before noncardiac surgery should follow standard cardiac indications, not surgical risk reduction alone.",
+              "Findings do not apply to patients with independent indications such as left main disease or very high-risk coronary anatomy."
+            ],
+            whyLandmark: "CARP changed perioperative cardiology practice by demonstrating that stable CAD patients undergoing vascular surgery generally do not benefit from prophylactic revascularization unless they already meet standard indications.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa041905"
+          }
+        ]
+      },
+      {
+        id: "hcm",
+        title: "Hypertrophic Cardiomyopathy",
+        color: "#1abc9c",
+        trials: [
+          {
+            id: "explorerhcm",
+            name: "EXPLORER-HCM",
+            fullName: "Clinical Study to Evaluate Mavacamten in Adults with Symptomatic Obstructive Hypertrophic Cardiomyopathy",
+            year: 2020,
+            n: "251",
+            question: "In symptomatic obstructive HCM, does mavacamten improve functional capacity, symptoms, and LVOT obstruction compared with placebo?",
+            result: "Mavacamten significantly improved the composite functional endpoint, reduced LVOT gradients, improved symptoms, and improved health status compared with placebo.",
+            takeaways: [
+              "Primary endpoint achieved more often with mavacamten than placebo.",
+              "Mavacamten reduced resting and provoked LVOT gradients.",
+              "More patients improved in NYHA functional class.",
+              "NT-proBNP and cardiac troponin improved, suggesting reduced myocardial wall stress.",
+              "Transient reductions in LVEF occurred in some patients, requiring echocardiographic surveillance.",
+              "Applies to obstructive HCM, not all HCM phenotypes."
+            ],
+            whyLandmark: "EXPLORER-HCM introduced the first major positive phase 3 evidence for a cardiac myosin inhibitor in obstructive HCM, moving treatment beyond nonspecific negative inotropes toward mechanism-based therapy.",
+            pubLink: "https://www.sciencedirect.com/science/article/pii/S014067362031792X"
+          }
+        ]
       }
     ]
   },
@@ -502,6 +553,25 @@ const cardiologyData = [
             ],
             whyLandmark: "Introduced soluble guanylate cyclase stimulation as an additional option for selected high-risk HFrEF patients.",
             pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1915928"
+          },
+          {
+            id: "aheft",
+            name: "A-HeFT",
+            fullName: "African-American Heart Failure Trial",
+            year: 2004,
+            n: "1,050",
+            question: "In Black patients with advanced HFrEF, does fixed-dose hydralazine plus isosorbide dinitrate improve outcomes when added to standard heart failure therapy?",
+            result: "Hydralazine/isosorbide dinitrate significantly improved the composite clinical score, reduced mortality, reduced HF hospitalization, and improved quality of life. Trial stopped early for benefit.",
+            takeaways: [
+              "All-cause mortality significantly reduced.",
+              "First hospitalization for heart failure was reduced.",
+              "Quality of life improved.",
+              "Studied only self-identified Black patients.",
+              "Conducted before modern quadruple HFrEF therapy (ARNI, MRA, beta-blocker, SGLT2i).",
+              "Biologic signal may relate to nitric oxide pathway responsiveness rather than race itself."
+            ],
+            whyLandmark: "Established hydralazine/isosorbide dinitrate as evidence-based add-on therapy in Black patients with symptomatic HFrEF despite standard therapy, providing mortality and hospitalization evidence for a nitric oxide–based strategy.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa042934"
           }
         ]
       },
@@ -647,6 +717,68 @@ const cardiologyData = [
             whyLandmark: "Transformed ICD programming from 'treat early' to 'treat only when necessary,' reducing shocks and improving safety.",
             pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1211107",
             examPearl: "One of the few device-programming trials showing a mortality benefit from changing ICD settings rather than changing the device itself."
+          },
+          {
+            id: "dinamit",
+            name: "DINAMIT",
+            fullName: "Defibrillator in Acute Myocardial Infarction Trial",
+            year: 2004,
+            n: "674",
+            question: "In high-risk patients early after MI, does prophylactic ICD implantation reduce all-cause mortality?",
+            result: "Early ICD implantation reduced arrhythmic death but did not reduce all-cause mortality because nonarrhythmic deaths increased.",
+            takeaways: [
+              "ICD therapy reduced arrhythmic death.",
+              "No all-cause mortality benefit.",
+              "Increased nonarrhythmic mortality offset the reduction in arrhythmic death.",
+              "Demonstrated that early post-MI mortality involves competing nonarrhythmic mechanisms.",
+              "Findings do not support routine primary-prevention ICD implantation within 40 days after MI."
+            ],
+            whyLandmark: "DINAMIT is the key trial behind the principle of delaying primary-prevention ICD implantation after MI, establishing that reducing arrhythmic death does not improve overall survival when nonarrhythmic mortality remains high.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa041489"
+          }
+        ]
+      },
+      {
+        id: "af-rate-rhythm",
+        title: "AF Rate vs Rhythm Control",
+        color: "#d35400",
+        trials: [
+          {
+            id: "affirm",
+            name: "AFFIRM",
+            fullName: "Atrial Fibrillation Follow-up Investigation of Rhythm Management",
+            year: 2002,
+            n: "4,060",
+            question: "In atrial fibrillation, is a rhythm-control strategy superior to a rate-control strategy for survival?",
+            result: "Rhythm control did not improve survival compared with rate control; there was a nonsignificant trend toward higher mortality and more hospitalizations in the rhythm-control group.",
+            takeaways: [
+              "Established rate control as a safe and acceptable strategy for many older or minimally symptomatic AF patients.",
+              "Rhythm control was associated with more hospitalizations and antiarrhythmic-drug adverse effects.",
+              "Rhythm control did not eliminate the need for anticoagulation when stroke risk remained elevated.",
+              "Used older antiarrhythmic drugs with limited catheter ablation.",
+              "Later trials (EAST-AFNET 4) modified interpretation for early AF.",
+              "Anticoagulation should be guided by thromboembolic risk, not rhythm strategy alone."
+            ],
+            whyLandmark: "AFFIRM shaped AF management for nearly two decades by supporting rate control plus appropriate anticoagulation as a reasonable default strategy in many patients.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa021328"
+          },
+          {
+            id: "raceii",
+            name: "RACE II",
+            fullName: "Rate Control Efficacy in Permanent Atrial Fibrillation II",
+            year: 2010,
+            n: "614",
+            question: "In permanent AF, is lenient rate control (resting HR <110 bpm) noninferior to strict rate control for cardiovascular outcomes?",
+            result: "Lenient rate control was noninferior to strict rate control for major cardiovascular outcomes and was easier to achieve with fewer clinic visits.",
+            takeaways: [
+              "Primary composite outcome was similar between lenient and strict strategies.",
+              "Lenient control required fewer clinic visits and medication adjustments.",
+              "Supports resting HR target below 110 bpm in stable, asymptomatic permanent AF patients.",
+              "Not applicable to patients with tachycardia-induced cardiomyopathy, decompensated HF, or significant symptoms.",
+              "Open-label design; permanent AF population only."
+            ],
+            whyLandmark: "RACE II changed guideline targets by making lenient rate control acceptable for stable patients with permanent AF, simplifying management without compromising outcomes.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1001337"
           }
         ]
       },
