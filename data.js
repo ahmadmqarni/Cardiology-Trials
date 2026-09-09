@@ -1128,6 +1128,34 @@ const cardiologyData = [
             pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1804988"
           }
         ]
+      },
+      {
+        id: "hypertension",
+        title: "Hypertension / Blood Pressure Targets",
+        color: "#16a085",
+        trials: [
+          {
+            id: "sprint",
+            name: "SPRINT",
+            fullName: "Systolic Blood Pressure Intervention Trial",
+            year: 2015,
+            n: "9,361",
+            question: "In high-risk hypertensive adults without diabetes or prior stroke, does targeting SBP <120 mmHg improve outcomes compared with SBP <140 mmHg?",
+            result: "Intensive SBP control reduced major cardiovascular events and all-cause mortality, but increased treatment-related adverse events.",
+            takeaways: [
+              "Reduced the composite of MI, ACS, stroke, heart failure, or cardiovascular death.",
+              "Reduced all-cause and cardiovascular mortality.",
+              "Reduced heart failure events.",
+              "Benefit seen in selected high-risk patients including older adults and CKD patients.",
+              "Excluded patients with diabetes or prior stroke.",
+              "Increased hypotension, syncope, electrolyte abnormalities, and AKI.",
+              "BP was measured using standardized automated office readings, not casual clinic BP.",
+              "Requires individualized application in frail patients, orthostatic symptoms, advanced CKD, or high fall risk."
+            ],
+            whyLandmark: "SPRINT reshaped hypertension targets by showing that selected high-risk adults benefit from intensive SBP lowering below 120 mmHg. It strongly influenced modern guideline discussions on lower BP goals while highlighting the need to balance CV benefit against adverse events.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1511939"
+          }
+        ]
       }
     ]
   }
