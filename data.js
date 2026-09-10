@@ -634,6 +634,33 @@ const cardiologyData = [
             pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa2107038"
           }
         ]
+      },
+      {
+        id: "advanced-hf",
+        title: "Advanced Heart Failure / Mechanical Circulatory Support",
+        color: "#8e44ad",
+        trials: [
+          {
+            id: "rematch",
+            name: "REMATCH",
+            fullName: "Randomized Evaluation of Mechanical Assistance for the Treatment of Congestive Heart Failure",
+            year: 2001,
+            n: "129",
+            question: "In transplant-ineligible patients with end-stage heart failure, does long-term LVAD therapy improve survival compared with optimal medical therapy?",
+            result: "LVAD therapy significantly improved survival compared with optimal medical therapy, but with substantially more device-related complications.",
+            takeaways: [
+              "Reduced risk of death from any cause.",
+              "Improved 1-year survival compared with medical therapy.",
+              "Improved quality of life and functional status in survivors.",
+              "Established LVAD as a viable destination therapy option for non-transplant candidates.",
+              "Serious adverse events were much higher with LVAD: infection, bleeding, stroke, device malfunction.",
+              "Used older pulsatile-flow technology, not modern continuous-flow devices.",
+              "Small trial in very advanced HF patients."
+            ],
+            whyLandmark: "REMATCH was the pivotal trial that proved long-term LVAD therapy could improve survival in end-stage HF patients ineligible for transplant. It established the concept of LVAD destination therapy, paving the way for modern mechanical circulatory support programs.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa012175"
+          }
+        ]
       }
     ]
   },
