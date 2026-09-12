@@ -71,201 +71,42 @@ function navigate(view, sectionId, subsectionId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── SVG ILLUSTRATIONS ─────────────────────────────────────────
-const SECTION_SVG = {
-  coronaries: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="hc-svg">
-    <defs>
-      <radialGradient id="cg1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="var(--hc-col)" stop-opacity="0.25"/>
-        <stop offset="100%" stop-color="var(--hc-col)" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <circle cx="60" cy="60" r="54" fill="url(#cg1)"/>
-    <!-- Coronary artery curve -->
-    <path d="M20 40 Q40 20 60 35 Q80 50 95 38 Q108 28 112 40" stroke="var(--hc-col)" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.9"/>
-    <path d="M20 40 Q40 20 60 35 Q80 50 95 38 Q108 28 112 40" stroke="rgba(255,255,255,0.15)" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <!-- Stent rings -->
-    <ellipse cx="62" cy="35" rx="7" ry="4" stroke="var(--hc-col)" stroke-width="2.5" fill="none" opacity="0.7"/>
-    <ellipse cx="74" cy="42" rx="7" ry="4" stroke="var(--hc-col)" stroke-width="2.5" fill="none" opacity="0.7"/>
-    <ellipse cx="86" cy="40" rx="7" ry="4" stroke="var(--hc-col)" stroke-width="2.5" fill="none" opacity="0.7"/>
-    <!-- Second artery branch -->
-    <path d="M60 35 Q65 60 55 85 Q48 100 50 110" stroke="var(--hc-col)" stroke-width="5.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-    <!-- Plaque glow dot -->
-    <circle cx="62" cy="38" r="5" fill="var(--hc-col)" opacity="0.6"/>
-    <circle cx="62" cy="38" r="3" fill="#fff" opacity="0.5"/>
-  </svg>`,
-
-  'heart-failure': `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="hc-svg">
-    <defs>
-      <radialGradient id="hfg1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="var(--hc-col)" stop-opacity="0.2"/>
-        <stop offset="100%" stop-color="var(--hc-col)" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <circle cx="60" cy="60" r="54" fill="url(#hfg1)"/>
-    <!-- Heart shape -->
-    <path d="M60 95 C30 75 10 55 12 38 C14 22 26 15 38 18 C46 20 54 27 60 35 C66 27 74 20 82 18 C94 15 106 22 108 38 C110 55 90 75 60 95Z" stroke="var(--hc-col)" stroke-width="3" fill="var(--hc-col)" fill-opacity="0.18" opacity="0.9"/>
-    <!-- LVAD pump symbol: circle with arrows -->
-    <circle cx="60" cy="58" r="16" stroke="var(--hc-col)" stroke-width="2.5" fill="none" stroke-dasharray="5 3" opacity="0.8"/>
-    <!-- Rotation arrows -->
-    <path d="M60 42 A18 18 0 0 1 78 60" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-    <polygon points="78,55 78,65 85,60" fill="#fff" opacity="0.7"/>
-    <!-- Center bolt -->
-    <circle cx="60" cy="58" r="5" fill="var(--hc-col)" opacity="0.9"/>
-    <circle cx="60" cy="58" r="2.5" fill="#fff" opacity="0.8"/>
-  </svg>`,
-
-  electrophysiology: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="hc-svg">
-    <defs>
-      <radialGradient id="epg1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="var(--hc-col)" stop-opacity="0.2"/>
-        <stop offset="100%" stop-color="var(--hc-col)" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <circle cx="60" cy="60" r="54" fill="url(#epg1)"/>
-    <!-- Pacemaker/ICD box -->
-    <rect x="28" y="22" width="44" height="36" rx="8" stroke="var(--hc-col)" stroke-width="3" fill="var(--hc-col)" fill-opacity="0.15"/>
-    <!-- ICD screen lines -->
-    <line x1="36" y1="34" x2="64" y2="34" stroke="var(--hc-col)" stroke-width="1.5" opacity="0.6"/>
-    <line x1="36" y1="42" x2="56" y2="42" stroke="var(--hc-col)" stroke-width="1.5" opacity="0.4"/>
-    <!-- ECG blip on box -->
-    <polyline points="34,50 40,50 43,44 46,56 49,44 52,50 64,50" stroke="#fff" stroke-width="2" fill="none" opacity="0.75"/>
-    <!-- Connector port -->
-    <rect x="48" y="56" width="6" height="6" rx="2" fill="var(--hc-col)" opacity="0.9"/>
-    <!-- Electrode lead 1 -->
-    <path d="M51 62 Q51 75 45 85 Q40 92 44 100" stroke="var(--hc-col)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.8"/>
-    <circle cx="44" cy="102" r="4" fill="var(--hc-col)" opacity="0.9"/>
-    <!-- Electrode lead 2 (shorter, RV) -->
-    <path d="M51 62 Q60 72 65 82 Q68 90 72 95" stroke="var(--hc-col)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
-    <circle cx="72" cy="97" r="3.5" fill="var(--hc-col)" opacity="0.7"/>
-  </svg>`,
-
-  preventive: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="hc-svg">
-    <defs>
-      <radialGradient id="pvg1" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="var(--hc-col)" stop-opacity="0.2"/>
-        <stop offset="100%" stop-color="var(--hc-col)" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <circle cx="60" cy="60" r="54" fill="url(#pvg1)"/>
-    <!-- Shield -->
-    <path d="M60 18 L88 28 L88 58 C88 76 60 102 60 102 C60 102 32 76 32 58 L32 28 Z" stroke="var(--hc-col)" stroke-width="3" fill="var(--hc-col)" fill-opacity="0.14" opacity="0.9"/>
-    <!-- Lipid molecule hexagon -->
-    <polygon points="60,42 68,47 68,57 60,62 52,57 52,47" stroke="var(--hc-col)" stroke-width="2.5" fill="none" opacity="0.9"/>
-    <!-- Double bonds -->
-    <line x1="60" y1="42" x2="60" y2="38" stroke="var(--hc-col)" stroke-width="2" opacity="0.7"/>
-    <line x1="68" y1="47" x2="72" y2="44" stroke="var(--hc-col)" stroke-width="2" opacity="0.7"/>
-    <line x1="68" y1="57" x2="72" y2="60" stroke="var(--hc-col)" stroke-width="2" opacity="0.7"/>
-    <line x1="60" y1="62" x2="60" y2="67" stroke="var(--hc-col)" stroke-width="2" opacity="0.7"/>
-    <line x1="52" y1="57" x2="48" y2="60" stroke="var(--hc-col)" stroke-width="2" opacity="0.7"/>
-    <line x1="52" y1="47" x2="48" y2="44" stroke="var(--hc-col)" stroke-width="2" opacity="0.7"/>
-    <!-- Center fill -->
-    <circle cx="60" cy="52" r="4" fill="var(--hc-col)" opacity="0.7"/>
-    <!-- Shield tick -->
-    <polyline points="50,78 57,86 72,68" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
-  </svg>`
-};
-
-const QUIZ_SVG = `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="hc-svg">
-  <defs>
-    <radialGradient id="qzg1" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#c0392b" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#c0392b" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <circle cx="60" cy="60" r="54" fill="url(#qzg1)"/>
-  <!-- Brain outline -->
-  <path d="M42 75 C30 72 22 62 24 50 C26 40 34 33 38 35 C36 30 40 24 47 24 C50 18 58 16 64 20 C68 15 76 16 80 22 C87 22 93 30 91 40 C96 44 96 54 90 60 C93 68 89 76 82 77 C78 82 70 84 64 80 C58 86 48 84 42 75Z" stroke="#ff6b6b" stroke-width="2.5" fill="rgba(192,57,43,0.15)" opacity="0.9"/>
-  <!-- Brain fold lines -->
-  <path d="M50 38 Q55 44 52 52" stroke="#ff6b6b" stroke-width="1.5" fill="none" opacity="0.5"/>
-  <path d="M65 32 Q68 40 64 48 Q60 56 63 64" stroke="#ff6b6b" stroke-width="1.5" fill="none" opacity="0.5"/>
-  <path d="M76 40 Q80 50 74 58" stroke="#ff6b6b" stroke-width="1.5" fill="none" opacity="0.5"/>
-  <!-- Lightning bolt -->
-  <polygon points="58,52 50,68 60,64 55,82 72,62 61,66 67,52" fill="#ff6b6b" opacity="0.9"/>
-  <polygon points="58,52 50,68 60,64 55,82 72,62 61,66 67,52" fill="#fff" opacity="0.2"/>
-</svg>`;
-
-// Keyword tags per section
-const SECTION_TAGS = {
-  coronaries:        ['ACS', 'STEMI', 'PCI', 'Statin', 'Antiplatelet'],
-  'heart-failure':   ['HFrEF', 'HFpEF', 'LVAD', 'Transplant', 'Diuresis'],
-  electrophysiology: ['AF', 'ICD', 'CRT', 'Ablation', 'Anticoag'],
-  preventive:        ['Lipids', 'Hypertension', 'Statin', 'Aspirin', 'Risk']
-};
-
 // ── HOME VIEW ─────────────────────────────────────────────────
 function renderHome() {
-  const sectionCards = cardiologyData.map(sec => {
+  const cards = cardiologyData.map(sec => {
     const trialCount = sec.subsections.reduce((a, s) => a + s.trials.length, 0);
-    const tags = (SECTION_TAGS[sec.id] || []).slice(0, 4).map(t =>
-      `<span class="hc-tag">${t}</span>`).join('');
-    const illus = SECTION_SVG[sec.id] || '';
+    const subCount   = sec.subsections.length;
     return `
-      <div class="hc-card" style="--hc-col:${sec.color}" data-action="goto-section" data-section="${sec.id}">
-        <div class="hc-glow"></div>
-        <div class="hc-illus">${illus}</div>
-        <div class="hc-tags">${tags}</div>
-        <h3 class="hc-title">${escape(sec.title)}</h3>
-        <p class="hc-desc">${escape(sec.description)}</p>
-        <div class="hc-footer">
-          <span class="hc-count">${trialCount} trials</span>
-          <span class="hc-cta">Explore Trials →</span>
+      <div class="section-card" style="--accent:${sec.color}"
+           data-action="goto-section" data-section="${sec.id}">
+        <span class="section-card-icon">${sec.icon}</span>
+        <h2>${escape(sec.title)}</h2>
+        <p>${escape(sec.description)}</p>
+        <div class="section-card-meta">
+          <span class="section-card-count">${subCount} sub-topics · ${trialCount} trials</span>
+          <span class="section-card-arrow">→</span>
         </div>
       </div>`;
   }).join('');
 
   const quizCard = `
-    <div class="hc-card hc-quiz-card" style="--hc-col:#c0392b" data-action="goto-quiz">
-      <div class="hc-glow"></div>
-      <div class="hc-illus">${QUIZ_SVG}</div>
-      <div class="hc-tags">
-        <span class="hc-tag">Flashcards</span>
-        <span class="hc-tag">All Categories</span>
-        <span class="hc-tag">Self-Test</span>
-      </div>
-      <h3 class="hc-title">Quiz Mode</h3>
-      <p class="hc-desc">Test your recall with flashcards. Choose categories, flip cards, and track what you know.</p>
-      <div class="hc-footer">
-        <span class="hc-count">${totalTrials()} cards</span>
-        <span class="hc-cta">Start Quiz →</span>
+    <div class="section-card quiz-card" data-action="goto-quiz">
+      <span class="section-card-icon">🧠</span>
+      <h2>Quiz Mode</h2>
+      <p>Test your knowledge with flashcards. Choose categories, flip cards, and track what you know.</p>
+      <div class="section-card-meta">
+        <span class="section-card-count quiz-card-label">Challenge yourself →</span>
+        <span class="section-card-arrow quiz-arrow">⚡</span>
       </div>
     </div>`;
-
-  // ECG path for hero animation
-  const ecgPath = `M-10,60 L10,60 L15,60 L20,20 L25,100 L30,60 L35,60 L50,60 L55,60 L60,10 L65,110 L70,60 L75,60 L90,60 L95,60 L100,35 L105,85 L110,60 L120,60 L140,60`;
 
   return `
-    <div class="home-hero">
-      <svg class="hero-ecg-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="hero-ecg-path" d="M0,60 L60,60 L80,60 L100,20 L120,100 L140,60 L160,60
-             L260,60 L280,60 L300,10 L320,110 L340,60 L360,60
-             L460,60 L480,60 L500,25 L520,95 L540,60 L560,60
-             L660,60 L680,60 L700,15 L720,105 L740,60 L760,60
-             L860,60 L880,60 L900,22 L920,98 L940,60 L960,60
-             L1060,60 L1080,60 L1100,18 L1120,102 L1140,60 L1200,60"/>
-      </svg>
-      <div class="hero-content">
-        <div class="hero-eyebrow">CARDIOLOGY FELLOWS REFERENCE</div>
-        <h2 class="hero-headline">Landmark<br>Cardiology Trials</h2>
-        <p class="hero-sub">Evidence that shaped modern practice —<br>organized, searchable, quizzable.</p>
-        <div class="hero-badges">
-          <span class="hero-badge">${totalTrials()} Landmark Trials</span>
-          <span class="hero-badge">4 Major Categories</span>
-        </div>
-      </div>
+    <div class="home-intro">
+      <h2>Landmark Cardiology Trials</h2>
+      <p>A curated reference for Cardiology Fellows — explore by topic, browse by subtopic, or search any trial.</p>
+      <span class="trial-count-badge">${totalTrials()} landmark trials</span>
     </div>
-    <div class="home-cards-wrap">
-      <div class="home-cards-grid">${sectionCards}${quizCard}</div>
-      <div class="home-tagline">
-        <svg class="tagline-wave" viewBox="0 0 200 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,12 L10,12 L15,12 L20,4 L25,20 L30,12 L40,12 L50,12 L55,6 L60,18 L65,12 L75,12 L85,12 L90,8 L95,16 L100,12 L110,12 L120,12 L125,5 L130,19 L135,12 L145,12 L155,12 L160,7 L165,17 L170,12 L180,12 L190,12 L195,9 L200,12" stroke="rgba(192,57,43,0.5)" stroke-width="1.5" fill="none"/>
-        </svg>
-        <span>SAME EVIDENCE. A BRIGHTER TOMORROW.</span>
-        <svg class="tagline-wave" viewBox="0 0 200 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,12 L10,12 L15,12 L20,4 L25,20 L30,12 L40,12 L50,12 L55,6 L60,18 L65,12 L75,12 L85,12 L90,8 L95,16 L100,12 L110,12 L120,12 L125,5 L130,19 L135,12 L145,12 L155,12 L160,7 L165,17 L170,12 L180,12 L190,12 L195,9 L200,12" stroke="rgba(192,57,43,0.5)" stroke-width="1.5" fill="none"/>
-        </svg>
-      </div>
-    </div>`;
+    <div class="section-grid">${cards}${quizCard}</div>`;
 }
 
 // ── SECTION VIEW ──────────────────────────────────────────────
