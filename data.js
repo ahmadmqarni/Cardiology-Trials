@@ -1157,6 +1157,34 @@ const cardiologyData = [
         ]
       },
       {
+        id: "diabetes-cardiometabolic",
+        title: "Diabetes / Cardiometabolic Risk Reduction",
+        color: "#d35400",
+        trials: [
+          {
+            id: "leader",
+            name: "LEADER",
+            fullName: "Liraglutide Effect and Action in Diabetes: Evaluation of Cardiovascular Outcome Results",
+            year: 2016,
+            n: "9,340",
+            question: "In patients with type 2 diabetes and high cardiovascular risk, does liraglutide reduce major cardiovascular events compared with placebo?",
+            result: "Liraglutide reduced 3-point MACE, cardiovascular death, and all-cause mortality compared with placebo.",
+            takeaways: [
+              "Reduced cardiovascular death, nonfatal MI, or nonfatal stroke.",
+              "Significantly reduced cardiovascular and all-cause mortality.",
+              "Demonstrated cardiovascular benefit beyond glucose lowering.",
+              "Supported GLP-1 receptor agonists for cardiometabolic risk reduction in high-risk type 2 diabetes.",
+              "Benefit was mainly driven by cardiovascular death, not clear isolated MI or stroke reduction.",
+              "Mainly applies to high-risk type 2 diabetes patients.",
+              "Gastrointestinal side effects were more common.",
+              "Daily injectable therapy may limit adherence."
+            ],
+            whyLandmark: "LEADER was one of the pivotal cardiovascular outcome trials proving that a GLP-1 receptor agonist can reduce cardiovascular events in type 2 diabetes. It helped shift diabetes care from glucose-centered treatment toward cardiovascular risk reduction and supported strong guideline recommendations for GLP-1 receptor agonists in patients with type 2 diabetes and established or high risk of ASCVD.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1603827"
+          }
+        ]
+      },
+      {
         id: "hypertension",
         title: "Hypertension / Blood Pressure Targets",
         color: "#16a085",
