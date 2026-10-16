@@ -428,7 +428,7 @@ const cardiologyData = [
     title: "Heart Failure",
     icon: "❤️",
     color: "#e84393",
-    description: "HFrEF, HFpEF, pharmacotherapy, MCS, monitoring devices",
+    description: "HFrEF, HFpEF, pharmacotherapy, decompensated HF, MCS, monitoring devices",
     subsections: [
       {
         id: "hfref-medical",
@@ -632,6 +632,33 @@ const cardiologyData = [
             ],
             whyLandmark: "First clearly positive major outcomes trial of a drug in HFpEF/HFmrEF, establishing SGLT2 inhibitors as core therapy across EF ranges.",
             pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa2107038"
+          }
+        ]
+      },
+      {
+        id: "decompensated-hf",
+        title: "Decompensated HF / Diuretic Strategy",
+        color: "#d35400",
+        trials: [
+          {
+            id: "dose",
+            name: "DOSE",
+            fullName: "Diuretic Optimization Strategies Evaluation",
+            year: 2011,
+            n: "308",
+            question: "In acute decompensated heart failure, does IV furosemide given as a continuous infusion vs q12h bolus, or at high dose (2.5× home oral dose) vs low dose (1× home oral dose), improve symptoms or renal safety?",
+            result: "Neither comparison met the co-primary endpoints (72-h patient global assessment; 72-h creatinine change). Bolus and infusion were equivalent; high dose showed a non-significant trend toward better symptom relief (p = 0.06) with greater decongestion.",
+            takeaways: [
+              "2×2 factorial design: route (bolus vs infusion) and dose (low vs high intensification).",
+              "Continuous infusion offered no advantage over q12h bolus on any endpoint.",
+              "High dose: more net fluid loss (4,899 vs 3,575 mL), more weight loss, better dyspnea relief.",
+              "High dose: more transient creatinine rise >0.3 mg/dL (23% vs 14%), without lasting renal harm.",
+              "No difference in death, rehospitalization, or ED visit at 60 days, or in length of stay.",
+              "Protocol allowed dose changes at 48 h, possibly biasing results toward the null.",
+              "Excluded patients needing inotropes/IV vasodilators or with severe renal dysfunction."
+            ],
+            whyLandmark: "First large RCT to directly test IV loop-diuretic strategies in ADHF. Showed bolus and infusion are equivalent and that an aggressive initial dose (~2.5× home oral dose) decongests more effectively without lasting renal harm, shaping the guideline practice of starting IV diuretics at least at the home oral dose and reframing transient creatinine rise during decongestion as acceptable.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1005419"
           }
         ]
       },
