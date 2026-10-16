@@ -428,7 +428,7 @@ const cardiologyData = [
     title: "Heart Failure",
     icon: "❤️",
     color: "#e84393",
-    description: "HFrEF, HFpEF, pharmacotherapy",
+    description: "HFrEF, HFpEF, pharmacotherapy, MCS, monitoring devices",
     subsections: [
       {
         id: "hfref-medical",
@@ -659,6 +659,34 @@ const cardiologyData = [
             ],
             whyLandmark: "REMATCH was the pivotal trial that proved long-term LVAD therapy could improve survival in end-stage HF patients ineligible for transplant. It established the concept of LVAD destination therapy, paving the way for modern mechanical circulatory support programs.",
             pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa012175"
+          }
+        ]
+      },
+      {
+        id: "hf-monitoring",
+        title: "Heart Failure Monitoring Devices",
+        color: "#2980b9",
+        trials: [
+          {
+            id: "champion",
+            name: "CHAMPION",
+            fullName: "CardioMEMS Heart Sensor Allows Monitoring of Pressure to Improve Outcomes in NYHA Class III Heart Failure Patients",
+            year: 2011,
+            n: "550",
+            question: "In patients with NYHA class III heart failure and a recent HF hospitalization, does PA pressure–guided management using a wireless implantable sensor reduce HF hospitalizations compared with standard care?",
+            result: "PA pressure–guided management reduced HF hospitalizations at 6 months (83 vs 120 events), with a larger 39% reduction by 15 months and no sensor failures.",
+            takeaways: [
+              "HF hospitalization reduced by ~28% at 6 months (primary endpoint).",
+              "Effect sustained and amplified over longer follow-up.",
+              "Lower PA pressures and better quality of life in the treatment arm.",
+              "Benefit seen across LVEF, including HFpEF.",
+              "Excellent device safety: 8 patients with device- or system-related complications.",
+              "No mortality benefit shown.",
+              "Single-blind (patients only); sponsor nurse support in the treatment arm raised concern for bias.",
+              "Only NYHA III with prior HFH, before modern quadruple HFrEF therapy."
+            ],
+            whyLandmark: "First adequately powered positive RCT of implantable haemodynamic monitoring in HF. It led to FDA approval of CardioMEMS (2014) and defined the population (NYHA III + prior HFH) underpinning current ESC 2026 (IIa) and ACC/AHA 2022 (2b) recommendations.",
+            pubLink: "https://doi.org/10.1016/S0140-6736(11)60101-3"
           }
         ]
       }
