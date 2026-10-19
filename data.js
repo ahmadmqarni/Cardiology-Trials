@@ -686,6 +686,26 @@ const cardiologyData = [
             ],
             whyLandmark: "REMATCH was the pivotal trial that proved long-term LVAD therapy could improve survival in end-stage HF patients ineligible for transplant. It established the concept of LVAD destination therapy, paving the way for modern mechanical circulatory support programs.",
             pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa012175"
+          },
+          {
+            id: "momentum-3",
+            name: "MOMENTUM 3",
+            fullName: "Multicenter Study of MagLev Technology in Patients Undergoing Mechanical Circulatory Support Therapy With HeartMate 3",
+            year: 2019,
+            n: "1,028",
+            question: "In patients with advanced heart failure requiring a durable LVAD, is the fully magnetically levitated centrifugal-flow HeartMate 3 superior to the axial-flow HeartMate II?",
+            result: "HeartMate 3 improved 2-year survival free of disabling stroke or pump reoperation compared with HeartMate II, with near elimination of pump thrombosis and fewer strokes and bleeds.",
+            takeaways: [
+              "Primary endpoint met in 76.9% vs 64.8% at 2 years (RR 0.84; P<0.001 for superiority).",
+              "Pump thrombosis nearly eliminated (1.4% vs 13.9%).",
+              "Pump replacement markedly reduced (2.3% vs 11.3%).",
+              "Lower rates of stroke of any severity, major bleeding, and GI bleeding.",
+              "Survival benefit emerged at 5-year follow-up (JAMA 2022): 58% vs 49%, with median survival on HeartMate 3 exceeding 5 years.",
+              "Infection, right heart failure, and bleeding remained important residual risks.",
+              "Open-label, industry-sponsored, US-only; comparator was an older LVAD, not medical therapy."
+            ],
+            whyLandmark: "MOMENTUM 3 was the largest randomized LVAD trial. It showed that a frictionless, fully maglev centrifugal pump largely solved the pump thrombosis problem of earlier devices, establishing HeartMate 3 as the standard of care for durable mechanical circulatory support, and its 5-year data showed LVAD survival approaching that after transplant.",
+            pubLink: "https://www.nejm.org/doi/full/10.1056/NEJMoa1900486"
           }
         ]
       },
